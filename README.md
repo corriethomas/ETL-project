@@ -6,11 +6,11 @@ In this project we will combine datasets from Kaggle that show film titles, whic
 
 We will combine these two datasets into one table in a database to run specific queries.
 
-You could use this database to run queries like which streaming service has any particular movie, which service provides more kid friendly movies, etc.
+You could use this database to run queries which streaming service has any particular movie, which service provides more kid friendly movies, etc.
 
-We'll create a unique id (using the hash function) for the movie titles to run these queries.
+The team will use jupyther notebook to extract, clean and structure the data. We'll create a unique id (using the hash function) for the movie titles to run these queries.
 
-This database will also go to a website we create, along with our final report, and description of our tables and database.
+We will use postgreSQL to create our database. This database will also go to a website we create, along with our final report, and description of our tables and database.
 
 ## Data Sources:
 (Will use these to pull directly from the website and then load smaller csvs into our repo) 
