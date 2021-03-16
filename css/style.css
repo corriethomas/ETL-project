@@ -1,0 +1,35 @@
+.thumbnail {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+  }
+  
+  /* Add a hover effect (blue shadow) */
+  img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  /* On screens that are 768px or less, make the thumbnail smaller */
+  @media (max-width : 768px) {
+      .thumbnail {
+        padding: 0px; 
+        width: 100px; 
+      }
+  }
+
+  @media (min-width : 992px) {
+    .thumbnail {
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      width: 200px; 
+    }
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Web Design Challenge</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    
+    <!-- reference Font Awesome -->
+    <script src="https://kit.fontawesome.com/2ce6145945.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+     
+  </head>
+  <body>
+    
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm navbar-expand-lg">
+        <div class="container">
+          <a href="./index.html" class="navbar-brand d-flex align-items-center">
+            <i class="fas fa-database"></i>
+            <strong class="px-1"> ETL Project</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#navbarHeader" aria-controls="navbarHeader" 
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarHeader">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="./html/report.html">Project Report</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./html/data.html">Database Tables</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+
+<main class="container">
+
+  <div class="row">
+    <div class="col-md">
+      <h1 class="fw-light text-center py-3">ETL Project</h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-10">
+      <!-- Central Section -->
+      <section class="text-justify container">
+        <div class="row">
+          <div class="col-md mx-auto">
+            
+            <p> 
+              In this project we combined datasets from <a href="https://kaggle.com">Kaggle</a> 
+              that show film titles, which streaming service(s) the film is on, ratings, 
+              imdb scores, and other information specific to the film 
+              (director, release year, actors, etc).
+            </p>
+            <p>
+              We combined two datasets into one relational table in a database to run 
+              specific queries.  You could use this database to run queries like which 
+              streaming service has any particular movie, which service provides 
+              more kid friendly movies, etc.
+            </p>
+            <p>
+              The team used <a href="https://jupyter.org">Jupyter Notebook</a> 
+              to extract, clean and structure the data. We created a unique id 
+              (using the hash function) for the movie titles to be able to join the two
+              datasets into a single table and run these queries.
+            </p>
+            <p>
+              We used <a href="https://postgresql.org">PostgreSQL</a> to create our database. 
+              The description of the tables in this database are also published in this 
+              website, along with our final report.
+            </p>  
+           
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-md-2">
+      <div class="bs-component">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="./html/report.html">Project Report</a>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="./html/data.html">Database Tables</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+ </div>
+
+</main>
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="mb-1">UCF Data Analysis And Visualization Bootcamp - Project 2 - ETL </p>
+    <p class="mb-0">Visit the bootcamp <a href="https://bootcamp.ce.ucf.edu/data/" target="_blank">web page</a>.</p>
+  </div>
+</footer>
+
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
