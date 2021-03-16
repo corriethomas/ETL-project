@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Web Design Challenge</title>
+    <title>ETL Project</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
   <!-- reference Font Awesome -->
@@ -23,8 +23,8 @@
       <div class="navbar navbar-dark bg-dark shadow-sm navbar-expand-lg">
         <div class="container">
           <a href="../index.html" class="navbar-brand d-flex align-items-center">
-            <i class="fas fa-globe-americas"></i>
-            <strong class="px-1"> Latitude</strong>
+            <i class="fas fa-database"></i>
+            <strong class="px-1"> ETL Project</strong>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                   data-bs-target="#navbarHeader" aria-controls="navbarHeader" 
@@ -33,23 +33,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarHeader">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Plots
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="./vis1.html">Temperature</a></li>
-                  <li><a class="dropdown-item" href="./vis2.html">Humdity</a></li>
-                  <li><a class="dropdown-item" href="./vis3.html">Cloudiness</a></li>
-                  <li><a class="dropdown-item" href="./vis4.html">Wind Speed</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="./report.html">Project Report</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./comparison.html">Comparisons</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="./data.html">Data</a>
+                <a class="nav-link" href="./data.html">Database Tables</a>
               </li>
             </ul>
           </div>
@@ -57,14 +45,61 @@
       </div>
     </header>
 
-
 <main class="container">
 
   <div class="row">
     <div class="col-md py-3">
-      <h1>Data</h1>
+      <h1>Database Tables</h1>
       <br>
-      <p> The following  table contains all the data used for plotting.</p>
+      <p> The following is the final table from the ETL process.</p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md py-3">
+      <h3>Table Structure</h3>
+      <br>
+    </div>
+  </div>
+
+
+
+
+  <div class="row py-3">
+    <div class="col-md">
+      <table border="1">
+        <thead>
+          <tr style="text-align:center;">
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Column Description</th>
+            <th>Accepts Nulls?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Id</td>
+            <td>Integer</td>
+            <td>Identifier, Primary Key</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Title</td>
+            <td>String</td>
+            <td>Movie Title</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md py-3">
+      <h3>Table Data</h3>
+      <br>
     </div>
   </div>
 
@@ -9101,7 +9136,7 @@
 
 <footer class="text-muted py-5">
   <div class="container">
-    <p class="mb-1">UCF Data Analysis And Visualization Bootcamp - Homework 11 - Web Challenge </p>
+    <p class="mb-1">UCF Data Analysis And Visualization Bootcamp - Project 2 - ETL </p>
     <p class="mb-0">Visit the bootcamp <a href="https://bootcamp.ce.ucf.edu/data/" target="_blank">web page</a>.</p>
   </div>
 </footer>
