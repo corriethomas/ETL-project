@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Web Design Challenge</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    
+    <!-- reference Font Awesome -->
+    <script src="https://kit.fontawesome.com/2ce6145945.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+     
+  </head>
+  <body>
+    
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm navbar-expand-lg">
+        <div class="container">
+          <a href="./index.html" class="navbar-brand d-flex align-items-center">
+            <i class="fas fa-globe-americas"></i>
+            <strong class="px-1"> Latitude</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#navbarHeader" aria-controls="navbarHeader" 
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarHeader">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Plots
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="./html/vis1.html">Temperature</a></li>
+                  <li><a class="dropdown-item" href="./html/vis2.html">Humidity</a></li>
+                  <li><a class="dropdown-item" href="./html/vis3.html">Cloudiness</a></li>
+                  <li><a class="dropdown-item" href="./html/vis4.html">Wind Speed</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./html/comparison.html">Comparisons</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./html/data.html">Data</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+
+<main class="container">
+  <div class="row">
+
+    <div class="col-md">
+      <!-- Central Section -->
+      <section class="py-5 text-justify container">
+        <div class="row py-lg-5">
+          <div class="col-md mx-auto">
+            <h1 class="fw-light">Climate vs. Latitude</h1>
+            <p class="lead text-muted"> 
+            This page provides the visualizations created for the
+             results of our weather analysis for 600 cities, 
+            comparing the temperature, wind speed, cloudiness 
+            and humidity against the city's geographical latitute.
+            </p>  
+            <p>The weather data and cities listing were retrieved from the 
+              API at <a href="https://openweathermap.org/api"> 
+                openweathermap.org</a>.
+            </p>
+            <p>
+              The process followed to create the weather dataset
+               was:
+            <ul>
+              <li>Download the cities listing (in json format) from the website and upload it into a Pandas dataframe.</li>
+              <li>Randomly select 600 cities from the full list, and obtain the weather facts (temperature, wind speed, cloudiness and humidity) for each one, 
+                  the data was then uploaded to another Pandas 
+                  dataframe and merged with the cities 
+                  dataframe.  The weather data was retrieved
+                  using the API on March 13, 2021 at 7:20PM.
+              </li>
+            </ul>
+            We then used <a href="https://matplotlib.org">the 
+              matplotlib python library</a> 
+              to produce the visualizations, using scatter 
+              plots to compare: 
+            <ul>
+              <li>Temperatures against latitude (Visualization 1)</li>
+              <li>Humidity against latitude (Visualization 2)</li>
+              <li>Cloudiness against latitude (Visualization 3)</li>
+              <li>Wind speed against latitude (Visualization 4)</li>
+              </ul>
+              </p>
+              <p>
+              Click on the thumbnail images on the right to access the 
+              visualization's page.  
+              You can also access them via the "Plots" menu on the 
+              navigation menu.
+              
+              Two additional pages are provided:
+              <ul>
+              <li><a href="./html/comparison.html">Comparisons</a> - Displays all scatter plots in one page, for comparison</li>
+              <li><a href="./html/data.html">Data</a> - Shows the full table with the data that was used to produce the visualizations</li>
+              </ul>
+              </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-md">
+
+      <!-- Contains the visualization links -->
+        <div class="container py-5 bg-light">
+
+          <div class="row">
+            <div class="column">
+              <h3 class='px-3'>Visualizations</h3>
+            </div>
+          </div>
+          <hr>
+      
+          <div class="row row-cols-sm-4 row-cols-md-2">
+
+            <div class="col">
+                <a target="_blank" href="./html/vis1.html">
+                  <img class="thumbnail" src="./images/Fig1.png" alt="Visualization 1">
+                </a> 
+            </div>
+            <div class="col">
+            
+                <a target="_blank" href="./html/vis2.html">
+                  <img class="thumbnail" src="./images/Fig2.png" alt="Visualization 1">
+                 </a>
+              
+            </div>
+            <div class="col">
+          
+                <a target="_blank" href="./html/vis3.html">
+                  <img class="thumbnail" src="./images/Fig3.png" alt="Visualization 1">
+                </a>
+              
+            </div>
+            <div class="col">
+             
+                <a target="_blank" href="./html/vis4.html">
+                  <img class="thumbnail" src="./images/Fig4.png" alt="Visualization 1">
+                </a>
+             
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="mb-1">UCF Data Analysis And Visualization Bootcamp - Homework 11 - Web Challenge </p>
+    <p class="mb-0">Visit the bootcamp <a href="https://bootcamp.ce.ucf.edu/data/" target="_blank">web page</a>.</p>
+  </div>
+</footer>
+
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
