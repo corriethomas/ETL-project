@@ -1,16 +1,16 @@
 --set drop tables
-Drop Table movies; 
+Drop Table imdb_movies; 
 
-Create Table movies(
-	movie_ID BIGINT Primary Key,
-	imdb_title Text,
-	title Text,
-	original_title Text,
-	year int,
-	genre text,
-	movie_title text,
-	duration int,
-	country text
+Create Table imdb_movies(
+	unique_id BIGINT PRIMARY KEY,
+	movie_title VARCHAR,
+	imdb_title_id VARCHAR,
+	title VARCHAR,
+	original_title VARCHAR,
+	year INT,
+	genre VARCHAR,
+	duration INT,
+	country VARCHAR
 );
 
-select * from movies;
+select * from imdb_movies;
