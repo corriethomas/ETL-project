@@ -33,3 +33,8 @@
       width: 200px; 
     }
 }
+
+img {
+  max-width:90%;
+  height:auto;
+}
