@@ -50,7 +50,7 @@
   <div class="row">
     <div class="col-md">
 
-      <div class="container py-5">
+      <div class="container py-3">
 
           <div class="row">
             <div class="column">
@@ -100,6 +100,239 @@
     </div>
 
   </div>
+
+  <div class="row">
+    <div class="column-md">
+      <h2>Extract</h2>
+      <p>Data was extracted from two *.csv files at <a href="kaggle.com">Kaggle</a>:
+      <ul>
+        <li>
+          <a href="https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv">The IMDb movies extensive dataset.</a>
+        </li>
+        <li>
+          <a href="https://www.kaggle.com/ruchi798/movies-on-netflix-prime-video-hulu-and-disney">The Movies on Netflix, Prime Video, Hulu and Disney+ dataset. </a>
+        </li>
+      </ul>
+      Data engineers worked on each individual dataset after downloading it to their respective workstations, and used the <a href="https://pandas.pydata.org/">Pandas data analysis library </a> to execute the remaining steps of the ETL process. 
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column-md-6 px-3">
+        Format for the first dataset (IMDB Movies Dataset)
+        <table border="1">
+          <thead>
+            <tr style="text-align:center;">
+              <th class="px-1">Column Name</th>
+              <th class="px-1">Column Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">imdb_title_id</td>
+              <td class="text-justify">Title Identifier from IMDB database.</td>
+            </tr>	
+            <tr>
+              <td class="text-center">title</td>
+              <td class="text-justify">Title name</td>
+            </tr>	
+            <tr>
+              <td class="text-center">original_title</td>
+              <td class="text-justify">Original title name </td>
+            </tr>	
+            <tr>
+              <td class="text-center">year</td>
+              <td class="text-justify">Year of release</td>
+            </tr>	
+            <tr>
+              <td class="text-center">date_published</td>	
+              <td class="text-justify">Date of release</td>
+            </tr>
+            <tr>
+              <td class="text-center">genre</td>
+              <td class="text-justify">Movie genre</td>
+            </tr>	
+            <tr>
+              <td class="text-center">duration</td>
+              <td class="text-justify">Duration (in minutes)</td>
+            </tr>	
+            <tr>
+              <td class="text-center">country</td>
+              <td class="text-justify">Movie country</td>
+            </tr>	
+            <tr>
+              <td class="text-center">language</td>
+              <td class="text-justify">Movie language</td>
+            </tr>	
+            <tr>
+              <td class="text-center">director</td>	
+              <td class="text-justify">Director name</td>
+            </tr>
+            <tr>
+              <td class="text-center">writer</td>
+              <td class="text-justify">Writer name</td>
+            </tr>	
+            <tr>
+              <td class="text-center">production_company</td>
+              <td class="text-justify">Production company</td>
+            </tr>	
+            <tr>
+              <td class="text-center">actors</td>
+              <td class="text-justify">Actor names</td>
+            </tr>	
+            <tr>
+              <td class="text-center">description</td>	
+              <td class="text-justify">Plot description</td>
+            </tr>
+            <tr>
+              <td class="text-center">avg_vote</td>
+              <td class="text-justify">Average vote</td>
+            </tr>	
+            <tr>
+              <td class="text-center">votes</td>
+              <td class="text-justify">Number of votes</td>
+            </tr>	
+            <tr>
+              <td class="text-center">budget</td>	
+              <td class="text-justify">Budget</td>
+            </tr>
+            <tr>
+              <td class="text-center">usa_gross_income</td>
+              <td class="text-justify">USA Gross Income</td>
+            </tr>	
+            <tr>
+              <td class="text-center">worlwide_gross_income</td>
+              <td class="text-justify">Worldwide Gross Income</td>
+            </tr>	
+            <tr>
+              <td class="text-center">metascore</td>
+              <td class="text-justify">Metascore Rating</td>
+            </tr>	
+            <tr>
+              <td class="text-center">reviews_from_users</td>
+              <td class="text-justify">Number of reviews from users</td>
+            </tr>	
+            <tr>
+              <td class="text-center">reviews_from_critics</td>
+              <td class="text-justify">Number of reviews from critics</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="column-md-6 px-3">
+      Format for the second dataset (Streaming Services Movies)
+      <table border="1">
+        <thead>
+          <tr style="text-align:center;">
+            <th class="px-1">Column Name</th>
+            <th class="px-1">Column Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">ID</td>
+            <td class="text-justify">Unique movie Id</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Title</td>
+            <td class="text-justify">Title</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Year</td>
+            <td class="text-justify">The year in which the movie was produced.</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Age</td>
+            <td class="text-justify">Target Age Group</td>
+          </tr>	
+          <tr>
+            <td class="text-center">IMDb</td>	
+            <td class="text-justify">IMDb Rating</td>
+          </tr>
+          <tr>
+            <td class="text-center">Rotten Tomatoes</td>
+            <td class="text-justify">Rotten Tomatoes %</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Netflix</td>
+            <td class="text-justify">Wether the movie is found on Netflix</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Hulu</td>
+            <td class="text-justify">Wether The Movie is found on Hulu</td>
+          </tr>	
+          <tr>
+            <td class="text-center">Prime Video</td>
+            <td class="text-justify">Wether the movie is found on Prime Video</td>
+          </tr>	
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="column">
+      <p>The following figure shows the section of one of the Jupyter notebook files
+        when the csv files are uploaded to Pandas:
+      </p>
+      <img src="../images/extract.png" style="max-width:75%;height:auto;">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column-md">
+      <h2>Transform</h2>
+      <p>
+        Once the data from the *.csv files is uploaded to Pandas, data transformation and cleanup is executed.
+      </p>
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="column">
+      <p>The first step is to discard the unwanted columns from the dataFrame:
+      </p>
+      <img src="../images/transform1.png" style="max-width:90%;height:auto;">
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="column">
+      <p>Then we get rid of rows with empty values.
+      </p>
+      <img src="../images/transform2.png" style="max-width:90%;height:auto;">
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="column">
+      <p>Since both datasets do not share a common column that can be used to join them,
+        we need to create a new column to serve as our join column.
+        The way we did this was to first create a "Movie_Title" colulmn, 
+        by concatenating the "title" column with the "year" column, 
+        and applying the Pandas <i>hash()</i> function on this column to obtain
+        the numeric value to be used as the key:
+      </p>
+        <ul>
+          <li>
+            Create the new columns:
+            <img class="py-3" src="../images/transform3.png">
+          </li>
+          <li>
+            Update the concatenated column:
+            <img class="py-3" src="../images/transform4.png">
+          </li>
+          <li>
+            Apply the hash function to the new concatenated column, and save to the new key column:
+            <img class="py-3" src="../images/transform5.png">
+          </li>
+        </ul>
+        <p>
+          After this, the data is ready to be loaded to the database.
+        </p>
+    </div>
+  </div>
+
 
 </main>
 
