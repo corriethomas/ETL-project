@@ -1,5 +1,5 @@
-DROP TABLE movies;
-DROP TABLE series;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS series;
 
 CREATE TABLE movies (
 	unique_id BIGINT PRIMARY KEY,
