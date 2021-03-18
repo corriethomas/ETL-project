@@ -2,7 +2,7 @@
 Drop Table imdb_movies; 
 
 Create Table imdb_movies(
-	unique_id BIGINT PRIMARY KEY,
+	unique_id TEXT PRIMARY KEY,
 	movie_title VARCHAR,
 	imdb_title_id VARCHAR,
 	title VARCHAR,
