@@ -14,7 +14,11 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+<<<<<<< HEAD
 # dist/ -- Commented out to allow bootswatch distribution to upload.
+=======
+# dist/   # Commented to allow bootswatch files under assets/dist
+>>>>>>> 1b274e6a13720c41721377e288c139fe6a939ca0
 downloads/
 eggs/
 .eggs/
