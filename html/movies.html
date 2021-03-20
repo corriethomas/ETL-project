@@ -1,0 +1,2044 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>ETL Project</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+  <!-- reference Font Awesome -->
+  <script src="https://kit.fontawesome.com/2ce6145945.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+     
+  </head>
+  <body>
+    
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm navbar-expand-lg">
+        <div class="container">
+          <a href="../index.html" class="navbar-brand d-flex align-items-center">
+            <i class="fas fa-database"></i>
+            <strong class="px-1"> ETL Project</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#navbarHeader" aria-controls="navbarHeader" 
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarHeader">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="./report.html">Project Report</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./data.html">Database Tables</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<main class="container">
+
+  <div class="row">
+    <div class="col-md py-3">
+      <h1>IMDB_Movies Table</h1>
+      <br>
+      <p> The IMDB_Movies table contains the movie data uploaded from 
+        <a href="https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset">
+        the <b>IMDB Movies Extensive Dataset</b></a> at Kaggle.com.
+        The source *.csv file contains 85,855 records and 22 columns.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md py-3">
+      <h3>Table Structure</h3>
+      <br>
+    </div>
+  </div>
+
+  <table border="1" class="dataframe">
+    <thead>
+        <tr style="text-align: center;">
+          <td class="px-3"><strong>Column Name</strong></td>
+          <td class="px-3"><strong>Column Type</strong></td>
+          <td class="px-3"><strong>Description</strong></td>
+        <tr style="text-align: center;">
+          <td class="px-3">unique_id</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">Unique identifier</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">title</td>
+          <td class="px-3">text</td>
+          <td class="px-3">The Movie Title</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">year</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">The year of release</td>
+        </tr> 
+        <tr style="text-align: center;">
+          <td class="px-3">age</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">Target Age Group</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">imdb</td>
+          <td class="px-3">numeric</td>
+          <td class="px-3">IMDB index</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">rotten_tomatoes</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Rotten tomatoes rating %</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">netflix</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">If the movie is in Netflix: 0 = false, 1 = true</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">hulu</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">If the movie is in Hulu: 0 = false, 1 = true</td></tr>
+        <tr style="text-align: center;">
+          <td class="px-3">prime_video</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">If the movie is in Amazon Prime Video: 0 = false, 1 = true</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">disney_plus</td>
+          <td class="px-3">integer</td>
+          <td class="px-3">If the movie is in Disney+: 0 = false, 1 = true</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">directors</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Movie Directors</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">genres</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Genres</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">country</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Country of Release</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">language</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Release language</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">runtime</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Movie runtime</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">movie_title</td>
+          <td class="px-3">Text</td>
+          <td class="px-3"><p>Computed column, concatenating the title and year.</p>
+            <p>Used to produce the primary key by <code>hash()</code> function.</p></td>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+
+
+  <div class="row">
+    <div class="col-md py-3">
+      <h3>Table Data</h3>
+      <p>We only show the first 100 rows here.</p>
+      <br>
+    </div>
+  </div>
+
+  <table border="1" class="dataframe">
+    <thead>
+      <tr style="text-align: center;">
+        <th></th>
+        <th>title</th>
+        <th>year</th>
+        <th>age</th>
+        <th>imdb</th>
+        <th>rotten_tomatoes</th>
+        <th>netflix</th>
+        <th>hulu</th>
+        <th>prime_video</th>
+        <th>disney_plus</th>
+        <th>directors</th>
+        <th>genres</th>
+        <th>country</th>
+        <th>language</th>
+        <th>runtime</th>
+        <th>movie_title</th>
+      </tr>
+      <tr>
+        <th>unique_id</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>-7952336440024175642</th>
+        <td>Inception</td>
+        <td>2010</td>
+        <td>13+</td>
+        <td>8.8</td>
+        <td>87%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Christopher Nolan</td>
+        <td>Action,Adventure,Sci-Fi,Thriller</td>
+        <td>United States,United Kingdom</td>
+        <td>English,Japanese,French</td>
+        <td>148.0</td>
+        <td>2010-Inception</td>
+      </tr>
+      <tr>
+        <th>2074459914621589465</th>
+        <td>The Matrix</td>
+        <td>1999</td>
+        <td>18+</td>
+        <td>8.7</td>
+        <td>87%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Lana Wachowski,Lilly Wachowski</td>
+        <td>Action,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>136.0</td>
+        <td>1999-The Matrix</td>
+      </tr>
+      <tr>
+        <th>5581745520648204</th>
+        <td>Avengers: Infinity War</td>
+        <td>2018</td>
+        <td>13+</td>
+        <td>8.5</td>
+        <td>84%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Anthony Russo,Joe Russo</td>
+        <td>Action,Adventure,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>149.0</td>
+        <td>2018-Avengers: Infinity War</td>
+      </tr>
+      <tr>
+        <th>6453648854757865414</th>
+        <td>Back to the Future</td>
+        <td>1985</td>
+        <td>7+</td>
+        <td>8.5</td>
+        <td>96%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Robert Zemeckis</td>
+        <td>Adventure,Comedy,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>116.0</td>
+        <td>1985-Back to the Future</td>
+      </tr>
+      <tr>
+        <th>6975831192963295021</th>
+        <td>The Good, the Bad and the Ugly</td>
+        <td>1966</td>
+        <td>18+</td>
+        <td>8.8</td>
+        <td>97%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Sergio Leone</td>
+        <td>Western</td>
+        <td>Italy,Spain,West Germany</td>
+        <td>Italian</td>
+        <td>161.0</td>
+        <td>1966-The Good, the Bad and the Ugly</td>
+      </tr>
+      <tr>
+        <th>6833721669868562863</th>
+        <td>Spider-Man: Into the Spider-Verse</td>
+        <td>2018</td>
+        <td>7+</td>
+        <td>8.4</td>
+        <td>97%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Bob Persichetti,Peter Ramsey,Rodney Rothman</td>
+        <td>Animation,Action,Adventure,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English,Spanish</td>
+        <td>117.0</td>
+        <td>2018-Spider-Man: Into the Spider-Verse</td>
+      </tr>
+      <tr>
+        <th>-4411218162772416053</th>
+        <td>The Pianist</td>
+        <td>2002</td>
+        <td>18+</td>
+        <td>8.5</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Roman Polanski</td>
+        <td>Biography,Drama,Music,War</td>
+        <td>United Kingdom,France,Poland,Germany</td>
+        <td>English,German,Russian</td>
+        <td>150.0</td>
+        <td>2002-The Pianist</td>
+      </tr>
+      <tr>
+        <th>-3215470335566885425</th>
+        <td>Django Unchained</td>
+        <td>2012</td>
+        <td>18+</td>
+        <td>8.4</td>
+        <td>87%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Quentin Tarantino</td>
+        <td>Drama,Western</td>
+        <td>United States</td>
+        <td>English,German,French,Italian</td>
+        <td>165.0</td>
+        <td>2012-Django Unchained</td>
+      </tr>
+      <tr>
+        <th>7427751583961610202</th>
+        <td>Raiders of the Lost Ark</td>
+        <td>1981</td>
+        <td>7+</td>
+        <td>8.4</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Steven Spielberg</td>
+        <td>Action,Adventure</td>
+        <td>United States</td>
+        <td>English,German,Hebrew,Spanish,Arabic,Nepali</td>
+        <td>115.0</td>
+        <td>1981-Raiders of the Lost Ark</td>
+      </tr>
+      <tr>
+        <th>4525085387001197800</th>
+        <td>Inglourious Basterds</td>
+        <td>2009</td>
+        <td>18+</td>
+        <td>8.3</td>
+        <td>89%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Quentin Tarantino</td>
+        <td>Adventure,Drama,War</td>
+        <td>Germany,United States</td>
+        <td>English,German,French,Italian</td>
+        <td>153.0</td>
+        <td>2009-Inglourious Basterds</td>
+      </tr>
+      <tr>
+        <th>-1779134919290185609</th>
+        <td>Taxi Driver</td>
+        <td>1976</td>
+        <td>18+</td>
+        <td>8.3</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Martin Scorsese</td>
+        <td>Crime,Drama</td>
+        <td>United States</td>
+        <td>English,Spanish</td>
+        <td>114.0</td>
+        <td>1976-Taxi Driver</td>
+      </tr>
+      <tr>
+        <th>-5699550305441655323</th>
+        <td>3 Idiots</td>
+        <td>2009</td>
+        <td>13+</td>
+        <td>8.4</td>
+        <td>100%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Rajkumar Hirani</td>
+        <td>Comedy,Drama</td>
+        <td>India</td>
+        <td>Hindi,English</td>
+        <td>170.0</td>
+        <td>2009-3 Idiots</td>
+      </tr>
+      <tr>
+        <th>-1405221980004478718</th>
+        <td>Pan's Labyrinth</td>
+        <td>2006</td>
+        <td>18+</td>
+        <td>8.2</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Guillermo del Toro</td>
+        <td>Drama,Fantasy,War</td>
+        <td>Mexico,Spain</td>
+        <td>Spanish</td>
+        <td>118.0</td>
+        <td>2006-Pan's Labyrinth</td>
+      </tr>
+      <tr>
+        <th>-4880385338756220486</th>
+        <td>Room</td>
+        <td>2015</td>
+        <td>18+</td>
+        <td>8.1</td>
+        <td>93%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Lenny Abrahamson</td>
+        <td>Drama,Thriller</td>
+        <td>Ireland,Canada,United Kingdom,United States</td>
+        <td>English</td>
+        <td>118.0</td>
+        <td>2015-Room</td>
+      </tr>
+      <tr>
+        <th>981223881962063234</th>
+        <td>Monty Python and the Holy Grail</td>
+        <td>1975</td>
+        <td>7+</td>
+        <td>8.2</td>
+        <td>97%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Terry Gilliam,Terry Jones</td>
+        <td>Adventure,Comedy,Fantasy</td>
+        <td>United Kingdom</td>
+        <td>English,French,Latin</td>
+        <td>91.0</td>
+        <td>1975-Monty Python and the Holy Grail</td>
+      </tr>
+      <tr>
+        <th>-7779070442671236961</th>
+        <td>Once Upon a Time in the West</td>
+        <td>1968</td>
+        <td>13+</td>
+        <td>8.5</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Sergio Leone</td>
+        <td>Western</td>
+        <td>Italy,United States</td>
+        <td>Italian,English,Spanish</td>
+        <td>165.0</td>
+        <td>1968-Once Upon a Time in the West</td>
+      </tr>
+      <tr>
+        <th>-3446596011464009495</th>
+        <td>Indiana Jones and the Last Crusade</td>
+        <td>1989</td>
+        <td>13+</td>
+        <td>8.2</td>
+        <td>88%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Steven Spielberg</td>
+        <td>Action,Adventure</td>
+        <td>United States</td>
+        <td>English,German,Greek,Arabic</td>
+        <td>127.0</td>
+        <td>1989-Indiana Jones and the Last Crusade</td>
+      </tr>
+      <tr>
+        <th>6528161562567992249</th>
+        <td>Groundhog Day</td>
+        <td>1993</td>
+        <td>7+</td>
+        <td>8.0</td>
+        <td>96%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Harold Ramis</td>
+        <td>Comedy,Fantasy,Romance</td>
+        <td>United States</td>
+        <td>English,French,Italian</td>
+        <td>101.0</td>
+        <td>1993-Groundhog Day</td>
+      </tr>
+      <tr>
+        <th>3879998892775256587</th>
+        <td>The King's Speech</td>
+        <td>2010</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Tom Hooper</td>
+        <td>Biography,Drama,History</td>
+        <td>United Kingdom,United States,Australia</td>
+        <td>English</td>
+        <td>118.0</td>
+        <td>2010-The King's Speech</td>
+      </tr>
+      <tr>
+        <th>3119400618385890284</th>
+        <td>Her</td>
+        <td>2013</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Spike Jonze</td>
+        <td>Drama,Romance,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>126.0</td>
+        <td>2013-Her</td>
+      </tr>
+      <tr>
+        <th>-4152424920663729810</th>
+        <td>There Will Be Blood</td>
+        <td>2007</td>
+        <td>18+</td>
+        <td>8.2</td>
+        <td>91%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Paul Thomas Anderson</td>
+        <td>Drama</td>
+        <td>United States</td>
+        <td>English,American Sign Language</td>
+        <td>158.0</td>
+        <td>2007-There Will Be Blood</td>
+      </tr>
+      <tr>
+        <th>8083334406242012636</th>
+        <td>The Social Network</td>
+        <td>2010</td>
+        <td>13+</td>
+        <td>7.7</td>
+        <td>96%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>David Fincher</td>
+        <td>Biography,Drama</td>
+        <td>United States</td>
+        <td>English,French</td>
+        <td>120.0</td>
+        <td>2010-The Social Network</td>
+      </tr>
+      <tr>
+        <th>-3726812396356721537</th>
+        <td>Dallas Buyers Club</td>
+        <td>2013</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>93%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Jean-Marc Vallée</td>
+        <td>Biography,Drama</td>
+        <td>United States</td>
+        <td>English,Japanese</td>
+        <td>117.0</td>
+        <td>2013-Dallas Buyers Club</td>
+      </tr>
+      <tr>
+        <th>-2114739170992037662</th>
+        <td>The Perks of Being a Wallflower</td>
+        <td>2012</td>
+        <td>13+</td>
+        <td>8.0</td>
+        <td>86%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Stephen Chbosky</td>
+        <td>Drama,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>103.0</td>
+        <td>2012-The Perks of Being a Wallflower</td>
+      </tr>
+      <tr>
+        <th>-4254078041168581628</th>
+        <td>Life of Brian</td>
+        <td>1979</td>
+        <td>18+</td>
+        <td>8.1</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Terry Jones</td>
+        <td>Comedy</td>
+        <td>United Kingdom</td>
+        <td>English,Latin</td>
+        <td>94.0</td>
+        <td>1979-Life of Brian</td>
+      </tr>
+      <tr>
+        <th>3300852604112838026</th>
+        <td>Ex Machina</td>
+        <td>2015</td>
+        <td>18+</td>
+        <td>7.7</td>
+        <td>92%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Alex Garland</td>
+        <td>Drama,Mystery,Sci-Fi,Thriller</td>
+        <td>United Kingdom,United States</td>
+        <td>English</td>
+        <td>108.0</td>
+        <td>2015-Ex Machina</td>
+      </tr>
+      <tr>
+        <th>565207823831268600</th>
+        <td>Silver Linings Playbook</td>
+        <td>2012</td>
+        <td>18+</td>
+        <td>7.7</td>
+        <td>92%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>David O. Russell</td>
+        <td>Comedy,Drama,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>122.0</td>
+        <td>2012-Silver Linings Playbook</td>
+      </tr>
+      <tr>
+        <th>-6145883226329640238</th>
+        <td>District 9</td>
+        <td>2009</td>
+        <td>18+</td>
+        <td>7.9</td>
+        <td>90%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Neill Blomkamp</td>
+        <td>Action,Sci-Fi,Thriller</td>
+        <td>South Africa,United States,New Zealand,Canada</td>
+        <td>English,Nyanja,Afrikaans,Zulu,Xhosa,Southern Sotho</td>
+        <td>112.0</td>
+        <td>2009-District 9</td>
+      </tr>
+      <tr>
+        <th>6704231909678131143</th>
+        <td>The Irishman</td>
+        <td>2019</td>
+        <td>18+</td>
+        <td>7.9</td>
+        <td>96%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Martin Scorsese</td>
+        <td>Biography,Crime,Drama</td>
+        <td>United States</td>
+        <td>English,Italian,Latin,Spanish,German</td>
+        <td>209.0</td>
+        <td>2019-The Irishman</td>
+      </tr>
+      <tr>
+        <th>-8282758906916226035</th>
+        <td>Moon</td>
+        <td>2009</td>
+        <td>18+</td>
+        <td>7.9</td>
+        <td>90%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Duncan Jones</td>
+        <td>Drama,Mystery,Sci-Fi</td>
+        <td>United Kingdom,United States</td>
+        <td>English,Spanish</td>
+        <td>97.0</td>
+        <td>2009-Moon</td>
+      </tr>
+      <tr>
+        <th>5652108532252143344</th>
+        <td>Marriage Story</td>
+        <td>2019</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>95%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Noah Baumbach</td>
+        <td>Comedy,Drama,Romance</td>
+        <td>United Kingdom,United States</td>
+        <td>English,Spanish</td>
+        <td>137.0</td>
+        <td>2019-Marriage Story</td>
+      </tr>
+      <tr>
+        <th>-3489804693240847759</th>
+        <td>Drive</td>
+        <td>2011</td>
+        <td>18+</td>
+        <td>7.8</td>
+        <td>92%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Nicolas Winding Refn</td>
+        <td>Crime,Drama</td>
+        <td>United States</td>
+        <td>English,Spanish</td>
+        <td>100.0</td>
+        <td>2011-Drive</td>
+      </tr>
+      <tr>
+        <th>5495624703230656094</th>
+        <td>Incredibles 2</td>
+        <td>2018</td>
+        <td>7+</td>
+        <td>7.6</td>
+        <td>94%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Brad Bird</td>
+        <td>Animation,Action,Adventure,Comedy,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>118.0</td>
+        <td>2018-Incredibles 2</td>
+      </tr>
+      <tr>
+        <th>-1988295671468246365</th>
+        <td>Dangal</td>
+        <td>2016</td>
+        <td>7+</td>
+        <td>8.4</td>
+        <td>88%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Nitesh Tiwari</td>
+        <td>Action,Biography,Drama,Sport</td>
+        <td>India</td>
+        <td>Hindi</td>
+        <td>161.0</td>
+        <td>2016-Dangal</td>
+      </tr>
+      <tr>
+        <th>-3253723447861797586</th>
+        <td>Klaus</td>
+        <td>2019</td>
+        <td>7+</td>
+        <td>8.2</td>
+        <td>94%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Sergio Pablos,Carlos Martínez López</td>
+        <td>Animation,Adventure,Comedy,Family</td>
+        <td>Spain</td>
+        <td>English,Saami</td>
+        <td>96.0</td>
+        <td>2019-Klaus</td>
+      </tr>
+      <tr>
+        <th>-1230457532085233202</th>
+        <td>Minority Report</td>
+        <td>2002</td>
+        <td>13+</td>
+        <td>7.6</td>
+        <td>90%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Steven Spielberg</td>
+        <td>Action,Crime,Mystery,Sci-Fi,Thriller</td>
+        <td>United States</td>
+        <td>English,Swedish</td>
+        <td>145.0</td>
+        <td>2002-Minority Report</td>
+      </tr>
+      <tr>
+        <th>-1665321405116440813</th>
+        <td>Mystic River</td>
+        <td>2003</td>
+        <td>18+</td>
+        <td>7.9</td>
+        <td>88%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Clint Eastwood</td>
+        <td>Crime,Drama,Mystery,Thriller</td>
+        <td>United States,Australia</td>
+        <td>English</td>
+        <td>138.0</td>
+        <td>2003-Mystic River</td>
+      </tr>
+      <tr>
+        <th>8113512481331486350</th>
+        <td>Like Stars on Earth</td>
+        <td>2007</td>
+        <td>7+</td>
+        <td>8.4</td>
+        <td>91%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Aamir Khan,Amole Gupte</td>
+        <td>Drama,Family</td>
+        <td>India</td>
+        <td>Hindi,English</td>
+        <td>165.0</td>
+        <td>2007-Like Stars on Earth</td>
+      </tr>
+      <tr>
+        <th>8403087602913339967</th>
+        <td>Ferris Bueller's Day Off</td>
+        <td>1986</td>
+        <td>13+</td>
+        <td>7.8</td>
+        <td>80%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>John Hughes</td>
+        <td>Comedy</td>
+        <td>United States</td>
+        <td>English,German</td>
+        <td>103.0</td>
+        <td>1986-Ferris Bueller's Day Off</td>
+      </tr>
+      <tr>
+        <th>4996172555338086893</th>
+        <td>Despicable Me</td>
+        <td>2010</td>
+        <td>7+</td>
+        <td>7.6</td>
+        <td>81%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Pierre Coffin,Chris Renaud</td>
+        <td>Animation,Comedy,Family,Fantasy</td>
+        <td>United States,France</td>
+        <td>English</td>
+        <td>95.0</td>
+        <td>2010-Despicable Me</td>
+      </tr>
+      <tr>
+        <th>-3129789729994087683</th>
+        <td>Hell or High Water</td>
+        <td>2016</td>
+        <td>18+</td>
+        <td>7.6</td>
+        <td>97%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>David Mackenzie</td>
+        <td>Action,Crime,Drama,Thriller,Western</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>102.0</td>
+        <td>2016-Hell or High Water</td>
+      </tr>
+      <tr>
+        <th>-3005228419787270254</th>
+        <td>Sin City</td>
+        <td>2005</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>77%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Frank Miller,Robert Rodriguez,Quentin Tarantino</td>
+        <td>Crime,Thriller</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>124.0</td>
+        <td>2005-Sin City</td>
+      </tr>
+      <tr>
+        <th>-4538404318840730558</th>
+        <td>Ip Man</td>
+        <td>2008</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>85%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Wilson Yip</td>
+        <td>Action,Adventure,Biography,Drama,History</td>
+        <td>Hong Kong,China</td>
+        <td>Cantonese,Mandarin,Japanese</td>
+        <td>106.0</td>
+        <td>2008-Ip Man</td>
+      </tr>
+      <tr>
+        <th>-4559416784030698820</th>
+        <td>Indiana Jones and the Temple of Doom</td>
+        <td>1984</td>
+        <td>7+</td>
+        <td>7.6</td>
+        <td>85%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Steven Spielberg</td>
+        <td>Action,Adventure</td>
+        <td>United States</td>
+        <td>English,Sinhalese,Hindi</td>
+        <td>118.0</td>
+        <td>1984-Indiana Jones and the Temple of Doom</td>
+      </tr>
+      <tr>
+        <th>-999494372027312881</th>
+        <td>The Theory of Everything</td>
+        <td>2014</td>
+        <td>13+</td>
+        <td>7.7</td>
+        <td>79%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>James Marsh</td>
+        <td>Biography,Drama,Romance</td>
+        <td>United Kingdom,Japan,United States</td>
+        <td>English,French</td>
+        <td>123.0</td>
+        <td>2014-The Theory of Everything</td>
+      </tr>
+      <tr>
+        <th>-6383178768632385522</th>
+        <td>The Pursuit of Happyness</td>
+        <td>2006</td>
+        <td>13+</td>
+        <td>8.0</td>
+        <td>67%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Gabriele Muccino</td>
+        <td>Biography,Drama</td>
+        <td>United States</td>
+        <td>English,Cantonese</td>
+        <td>117.0</td>
+        <td>2006-The Pursuit of Happyness</td>
+      </tr>
+      <tr>
+        <th>1058765137244310498</th>
+        <td>Senna</td>
+        <td>2010</td>
+        <td>13+</td>
+        <td>8.5</td>
+        <td>93%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Asif Kapadia</td>
+        <td>Documentary,Biography,Sport</td>
+        <td>United Kingdom,France,United States</td>
+        <td>English,Portuguese,French,Japanese</td>
+        <td>106.0</td>
+        <td>2010-Senna</td>
+      </tr>
+      <tr>
+        <th>-2228487709582040339</th>
+        <td>Scott Pilgrim vs. the World</td>
+        <td>2010</td>
+        <td>13+</td>
+        <td>7.5</td>
+        <td>81%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Edgar Wright</td>
+        <td>Action,Comedy,Fantasy,Romance</td>
+        <td>United States,United Kingdom,Canada,Japan</td>
+        <td>English</td>
+        <td>112.0</td>
+        <td>2010-Scott Pilgrim vs. the World</td>
+      </tr>
+      <tr>
+        <th>-6794387818170486220</th>
+        <td>Magnolia</td>
+        <td>1999</td>
+        <td>18+</td>
+        <td>8.0</td>
+        <td>83%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Paul Thomas Anderson</td>
+        <td>Drama</td>
+        <td>United States</td>
+        <td>English,German,French</td>
+        <td>188.0</td>
+        <td>1999-Magnolia</td>
+      </tr>
+      <tr>
+        <th>8001444078243623482</th>
+        <td>The Hateful Eight</td>
+        <td>2015</td>
+        <td>18+</td>
+        <td>7.8</td>
+        <td>75%</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Quentin Tarantino</td>
+        <td>Crime,Drama,Mystery,Thriller,Western</td>
+        <td>United States</td>
+        <td>English,Spanish,French</td>
+        <td>168.0</td>
+        <td>2015-The Hateful Eight</td>
+      </tr>
+      <tr>
+        <th>...</th>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>-7573076383062727985</th>
+        <td>Snow Dogs</td>
+        <td>2002</td>
+        <td>7+</td>
+        <td>5.2</td>
+        <td>25%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Brian Levant</td>
+        <td>Adventure,Comedy,Family,Sport</td>
+        <td>Canada,United States</td>
+        <td>English</td>
+        <td>99.0</td>
+        <td>2002-Snow Dogs</td>
+      </tr>
+      <tr>
+        <th>-3632682785528826728</th>
+        <td>Dr. Dolittle 2</td>
+        <td>2001</td>
+        <td>7+</td>
+        <td>4.7</td>
+        <td>42%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Steve Carr</td>
+        <td>Comedy,Family,Fantasy</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>87.0</td>
+        <td>2001-Dr. Dolittle 2</td>
+      </tr>
+      <tr>
+        <th>-7100990084429581041</th>
+        <td>Camp Nowhere</td>
+        <td>1994</td>
+        <td>7+</td>
+        <td>6.1</td>
+        <td>18%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Jonathan Prince</td>
+        <td>Adventure,Comedy,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>96.0</td>
+        <td>1994-Camp Nowhere</td>
+      </tr>
+      <tr>
+        <th>-5735835122557753988</th>
+        <td>Honey I Blew Up the Kid</td>
+        <td>1992</td>
+        <td>7+</td>
+        <td>4.8</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Randal Kleiser</td>
+        <td>Adventure,Comedy,Family,Romance,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>1992-Honey I Blew Up the Kid</td>
+      </tr>
+      <tr>
+        <th>4212499641698413857</th>
+        <td>One Magic Christmas</td>
+        <td>1985</td>
+        <td>all</td>
+        <td>6.5</td>
+        <td>47%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Phillip Borsos</td>
+        <td>Family,Fantasy</td>
+        <td>Canada,United States</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>1985-One Magic Christmas</td>
+      </tr>
+      <tr>
+        <th>7209058847937324042</th>
+        <td>The Computer Wore Tennis Shoes</td>
+        <td>1969</td>
+        <td>all</td>
+        <td>6.1</td>
+        <td>50%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Robert Butler</td>
+        <td>Comedy,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>91.0</td>
+        <td>1969-The Computer Wore Tennis Shoes</td>
+      </tr>
+      <tr>
+        <th>-3465913553958057627</th>
+        <td>102 Dalmatians</td>
+        <td>2000</td>
+        <td>all</td>
+        <td>4.9</td>
+        <td>31%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Kevin Lima</td>
+        <td>Adventure,Comedy,Family</td>
+        <td>United States,United Kingdom</td>
+        <td>English</td>
+        <td>100.0</td>
+        <td>2000-102 Dalmatians</td>
+      </tr>
+      <tr>
+        <th>5586652601777881796</th>
+        <td>The Santa Clause 3: The Escape Clause</td>
+        <td>2006</td>
+        <td>all</td>
+        <td>4.7</td>
+        <td>17%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Michael Lembeck</td>
+        <td>Adventure,Comedy,Family,Fantasy</td>
+        <td>United States,Canada</td>
+        <td>English</td>
+        <td>97.0</td>
+        <td>2006-The Santa Clause 3: The Escape Clause</td>
+      </tr>
+      <tr>
+        <th>-2434485242170242072</th>
+        <td>Return from Witch Mountain</td>
+        <td>1978</td>
+        <td>all</td>
+        <td>5.9</td>
+        <td>50%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>John Hough</td>
+        <td>Family,Adventure,Sci-Fi,Fantasy</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>95.0</td>
+        <td>1978-Return from Witch Mountain</td>
+      </tr>
+      <tr>
+        <th>6538980980894684968</th>
+        <td>Prom</td>
+        <td>2011</td>
+        <td>7+</td>
+        <td>5.4</td>
+        <td>36%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Joe Nussbaum</td>
+        <td>Comedy,Drama,Family,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>104.0</td>
+        <td>2011-Prom</td>
+      </tr>
+      <tr>
+        <th>3401576055716561294</th>
+        <td>The Wild</td>
+        <td>2006</td>
+        <td>all</td>
+        <td>5.3</td>
+        <td>19%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Lee Tamahori</td>
+        <td>Action,Adventure,Drama,Thriller</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>117.0</td>
+        <td>2006-The Wild</td>
+      </tr>
+      <tr>
+        <th>7440704511867552167</th>
+        <td>Valiant</td>
+        <td>2005</td>
+        <td>all</td>
+        <td>5.5</td>
+        <td>32%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Gary Chapman</td>
+        <td>Animation,Adventure,Comedy,Family,War</td>
+        <td>United Kingdom,United States</td>
+        <td>English</td>
+        <td>76.0</td>
+        <td>2005-Valiant</td>
+      </tr>
+      <tr>
+        <th>6952269802906789437</th>
+        <td>The Haunted Mansion</td>
+        <td>2003</td>
+        <td>7+</td>
+        <td>5.0</td>
+        <td>14%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Rob Minkoff</td>
+        <td>Comedy,Family,Fantasy,Horror,Mystery</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>99.0</td>
+        <td>2003-The Haunted Mansion</td>
+      </tr>
+      <tr>
+        <th>5033067556319030307</th>
+        <td>Jungle 2 Jungle</td>
+        <td>1997</td>
+        <td>7+</td>
+        <td>5.2</td>
+        <td>19%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>John Pasquin</td>
+        <td>Comedy,Family</td>
+        <td>United States,France</td>
+        <td>English</td>
+        <td>105.0</td>
+        <td>1997-Jungle 2 Jungle</td>
+      </tr>
+      <tr>
+        <th>5499997951943335797</th>
+        <td>Hannah Montana &amp; Miley Cyrus: Best of Both Worlds Concert</td>
+        <td>2008</td>
+        <td>all</td>
+        <td>2.4</td>
+        <td>73%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Bruce Hendricks</td>
+        <td>Documentary,Music</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>74.0</td>
+        <td>2008-Hannah Montana &amp; Miley Cyrus: Best of Both Worlds Concert</td>
+      </tr>
+      <tr>
+        <th>-7721722241008194551</th>
+        <td>Tom and Huck</td>
+        <td>1995</td>
+        <td>7+</td>
+        <td>5.5</td>
+        <td>25%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Peter Hewitt</td>
+        <td>Adventure,Comedy,Drama,Family,Romance,Western</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>97.0</td>
+        <td>1995-Tom and Huck</td>
+      </tr>
+      <tr>
+        <th>8186128278542761125</th>
+        <td>Young Black Stallion</td>
+        <td>2003</td>
+        <td>all</td>
+        <td>5.6</td>
+        <td>45%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Simon Wincer</td>
+        <td>Adventure,Family,Drama</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>50.0</td>
+        <td>2003-Young Black Stallion</td>
+      </tr>
+      <tr>
+        <th>-6765980834652031930</th>
+        <td>Pocahontas II: Journey to a New World</td>
+        <td>1998</td>
+        <td>all</td>
+        <td>4.9</td>
+        <td>29%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Tom Ellery,Bradley Raymond</td>
+        <td>Animation,Adventure,Drama,Family,Musical,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>72.0</td>
+        <td>1998-Pocahontas II: Journey to a New World</td>
+      </tr>
+      <tr>
+        <th>4481094842338847620</th>
+        <td>Cheetah</td>
+        <td>1989</td>
+        <td>all</td>
+        <td>6.0</td>
+        <td>50%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Jeff Blyth</td>
+        <td>Adventure,Drama,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>83.0</td>
+        <td>1989-Cheetah</td>
+      </tr>
+      <tr>
+        <th>6587126083898176644</th>
+        <td>The Fox and the Hound 2</td>
+        <td>2006</td>
+        <td>all</td>
+        <td>5.3</td>
+        <td>20%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Jim Kammerud</td>
+        <td>Animation,Adventure,Comedy,Family,Musical</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>69.0</td>
+        <td>2006-The Fox and the Hound 2</td>
+      </tr>
+      <tr>
+        <th>-3546466838122049153</th>
+        <td>Honey, We Shrunk Ourselves</td>
+        <td>1997</td>
+        <td>7+</td>
+        <td>5.0</td>
+        <td>25%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Dean Cundey</td>
+        <td>Action,Adventure,Comedy,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>74.0</td>
+        <td>1997-Honey, We Shrunk Ourselves</td>
+      </tr>
+      <tr>
+        <th>-6005575305278347723</th>
+        <td>The Jungle Book 2</td>
+        <td>2003</td>
+        <td>all</td>
+        <td>5.4</td>
+        <td>19%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Steve Trenbirth</td>
+        <td>Animation,Adventure,Family,Musical</td>
+        <td>United States,Australia</td>
+        <td>English</td>
+        <td>72.0</td>
+        <td>2003-The Jungle Book 2</td>
+      </tr>
+      <tr>
+        <th>8505411061926008516</th>
+        <td>I'll Be Home for Christmas</td>
+        <td>1998</td>
+        <td>all</td>
+        <td>5.5</td>
+        <td>23%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Arlene Sanford</td>
+        <td>Comedy,Family</td>
+        <td>United States,Canada</td>
+        <td>English</td>
+        <td>86.0</td>
+        <td>1998-I'll Be Home for Christmas</td>
+      </tr>
+      <tr>
+        <th>2700871433743337641</th>
+        <td>Confessions of a Teenage Drama Queen</td>
+        <td>2004</td>
+        <td>7+</td>
+        <td>4.6</td>
+        <td>14%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Sara Sugarman</td>
+        <td>Comedy,Family,Music,Romance</td>
+        <td>Germany,United States</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>2004-Confessions of a Teenage Drama Queen</td>
+      </tr>
+      <tr>
+        <th>-3226187732108579279</th>
+        <td>The Shaggy D.A.</td>
+        <td>1976</td>
+        <td>all</td>
+        <td>5.9</td>
+        <td>50%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Robert Stevenson</td>
+        <td>Comedy,Family,Fantasy</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>91.0</td>
+        <td>1976-The Shaggy D.A.</td>
+      </tr>
+      <tr>
+        <th>5424035853503344233</th>
+        <td>The Brave Little Toaster to the Rescue</td>
+        <td>1997</td>
+        <td>all</td>
+        <td>6.3</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Robert C. Ramirez,Patrick A. Ventura</td>
+        <td>Animation,Adventure,Family,Fantasy</td>
+        <td>United States</td>
+        <td>Chinese,Mandarin,Japanese,Korean,French,English</td>
+        <td>74.0</td>
+        <td>1997-The Brave Little Toaster to the Rescue</td>
+      </tr>
+      <tr>
+        <th>-1639717455781217437</th>
+        <td>Blank Check</td>
+        <td>1994</td>
+        <td>7+</td>
+        <td>5.3</td>
+        <td>9%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Rupert Wainwright</td>
+        <td>Comedy,Crime,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>93.0</td>
+        <td>1994-Blank Check</td>
+      </tr>
+      <tr>
+        <th>1588115762686753195</th>
+        <td>Cinderella II: Dreams Come True</td>
+        <td>2002</td>
+        <td>all</td>
+        <td>5.0</td>
+        <td>11%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>John Kafka</td>
+        <td>Animation,Family,Fantasy,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>73.0</td>
+        <td>2002-Cinderella II: Dreams Come True</td>
+      </tr>
+      <tr>
+        <th>7526791374923929749</th>
+        <td>Belle's Magical World</td>
+        <td>1998</td>
+        <td>all</td>
+        <td>5.4</td>
+        <td>17%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Bob Kline,Cullen Blaine,Dale Case,Daniel de la Vega,Barbara Dourmaskin-Case,Rick Leon,Burt Medall,Mitch Rochon</td>
+        <td>Animation,Comedy,Family,Fantasy,Musical,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>92.0</td>
+        <td>1998-Belle's Magical World</td>
+      </tr>
+      <tr>
+        <th>5280053728251681233</th>
+        <td>Tarzan &amp; Jane</td>
+        <td>2002</td>
+        <td>all</td>
+        <td>5.4</td>
+        <td>17%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Steve Loter,Victor Cook,Steve Loter,Don MacKinnon,Lisa Schaffer</td>
+        <td>Animation,Adventure,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>75.0</td>
+        <td>2002-Tarzan &amp; Jane</td>
+      </tr>
+      <tr>
+        <th>7476853883088387966</th>
+        <td>Operation Dumbo Drop</td>
+        <td>1995</td>
+        <td>7+</td>
+        <td>5.1</td>
+        <td>31%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Simon Wincer</td>
+        <td>Action,Adventure,Comedy,Drama,Family,War</td>
+        <td>United States</td>
+        <td>English,Vietnamese</td>
+        <td>107.0</td>
+        <td>1995-Operation Dumbo Drop</td>
+      </tr>
+      <tr>
+        <th>-3692747410830956729</th>
+        <td>Herbie Goes Bananas</td>
+        <td>1980</td>
+        <td>all</td>
+        <td>5.0</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Vincent McEveety</td>
+        <td>Adventure,Comedy,Family,Fantasy</td>
+        <td>United States</td>
+        <td>English,Spanish</td>
+        <td>100.0</td>
+        <td>1980-Herbie Goes Bananas</td>
+      </tr>
+      <tr>
+        <th>7209622975828586748</th>
+        <td>The Brave Little Toaster Goes to Mars</td>
+        <td>1998</td>
+        <td>all</td>
+        <td>5.7</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Robert C. Ramirez,Patrick A. Ventura</td>
+        <td>Animation,Adventure,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>73.0</td>
+        <td>1998-The Brave Little Toaster Goes to Mars</td>
+      </tr>
+      <tr>
+        <th>-1689860110809818807</th>
+        <td>First Kid</td>
+        <td>1996</td>
+        <td>7+</td>
+        <td>5.2</td>
+        <td>23%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>David Mickey Evans</td>
+        <td>Family,Comedy</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>101.0</td>
+        <td>1996-First Kid</td>
+      </tr>
+      <tr>
+        <th>5211772224999246022</th>
+        <td>College Road Trip</td>
+        <td>2008</td>
+        <td>all</td>
+        <td>4.3</td>
+        <td>12%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Roger Kumble</td>
+        <td>Adventure,Comedy,Drama,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>83.0</td>
+        <td>2008-College Road Trip</td>
+      </tr>
+      <tr>
+        <th>3489783245154713529</th>
+        <td>Life with Mikey</td>
+        <td>1993</td>
+        <td>7+</td>
+        <td>5.6</td>
+        <td>25%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>James Lapine</td>
+        <td>Comedy,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>91.0</td>
+        <td>1993-Life with Mikey</td>
+      </tr>
+      <tr>
+        <th>-6605205276000025322</th>
+        <td>Sacred Planet</td>
+        <td>2004</td>
+        <td>all</td>
+        <td>6.1</td>
+        <td>58%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Jon Long</td>
+        <td>Documentary,Short</td>
+        <td>Canada,Malaysia,United States</td>
+        <td>English</td>
+        <td>40.0</td>
+        <td>2004-Sacred Planet</td>
+      </tr>
+      <tr>
+        <th>3287742666750189027</th>
+        <td>The Hunchback of Notre Dame II</td>
+        <td>2002</td>
+        <td>all</td>
+        <td>4.7</td>
+        <td>30%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Bradley Raymond</td>
+        <td>Animation,Adventure,Comedy,Drama,Family,Musical,Romance</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>68.0</td>
+        <td>2002-The Hunchback of Notre Dame II</td>
+      </tr>
+      <tr>
+        <th>5161683120441374486</th>
+        <td>Life-Size 2</td>
+        <td>2018</td>
+        <td>16+</td>
+        <td>4.8</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Steven K. Tsuchida</td>
+        <td>Comedy,Fantasy</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>81.0</td>
+        <td>2018-Life-Size 2</td>
+      </tr>
+      <tr>
+        <th>6630382542981255746</th>
+        <td>The Million Dollar Duck</td>
+        <td>1971</td>
+        <td>all</td>
+        <td>5.9</td>
+        <td>17%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Vincent McEveety</td>
+        <td>Comedy,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>1971-The Million Dollar Duck</td>
+      </tr>
+      <tr>
+        <th>5555656735883175395</th>
+        <td>America's Heart and Soul</td>
+        <td>2004</td>
+        <td>7+</td>
+        <td>5.1</td>
+        <td>50%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Louie Schwartzberg</td>
+        <td>Documentary</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>84.0</td>
+        <td>2004-America's Heart and Soul</td>
+      </tr>
+      <tr>
+        <th>-138744470611363652</th>
+        <td>Jonas Brothers: The Concert Experience</td>
+        <td>2009</td>
+        <td>all</td>
+        <td>1.6</td>
+        <td>24%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Bruce Hendricks</td>
+        <td>Documentary,Music</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>76.0</td>
+        <td>2009-Jonas Brothers: The Concert Experience</td>
+      </tr>
+      <tr>
+        <th>8100389740231542477</th>
+        <td>The Country Bears</td>
+        <td>2002</td>
+        <td>all</td>
+        <td>4.1</td>
+        <td>29%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Peter Hastings</td>
+        <td>Comedy,Family,Music,Musical</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>88.0</td>
+        <td>2002-The Country Bears</td>
+      </tr>
+      <tr>
+        <th>4762175489643802234</th>
+        <td>Inspector Gadget 2</td>
+        <td>2003</td>
+        <td>all</td>
+        <td>3.4</td>
+        <td>40%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Alex Zamm</td>
+        <td>Action,Comedy,Crime,Family,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>2003-Inspector Gadget 2</td>
+      </tr>
+      <tr>
+        <th>-8694262830484609763</th>
+        <td>Doug's 1st Movie</td>
+        <td>1999</td>
+        <td>all</td>
+        <td>5.0</td>
+        <td>26%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Maurice Joyce</td>
+        <td>Animation,Adventure,Comedy,Drama,Family,Fantasy,Sci-Fi</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>77.0</td>
+        <td>1999-Doug's 1st Movie</td>
+      </tr>
+      <tr>
+        <th>2001289483810135400</th>
+        <td>A Kid in King Arthur's Court</td>
+        <td>1995</td>
+        <td>7+</td>
+        <td>4.7</td>
+        <td>5%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Michael Gottlieb</td>
+        <td>Adventure,Comedy,Family,Fantasy,Romance</td>
+        <td>United States,Hungary,United Kingdom</td>
+        <td>English</td>
+        <td>89.0</td>
+        <td>1995-A Kid in King Arthur's Court</td>
+      </tr>
+      <tr>
+        <th>-4113550106739065477</th>
+        <td>George of the Jungle 2</td>
+        <td>2003</td>
+        <td>7+</td>
+        <td>3.3</td>
+        <td>17%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>David Grossman</td>
+        <td>Adventure,Comedy,Family</td>
+        <td>United States,Australia</td>
+        <td>English</td>
+        <td>87.0</td>
+        <td>2003-George of the Jungle 2</td>
+      </tr>
+      <tr>
+        <th>7887286761011593515</th>
+        <td>That Darn Cat</td>
+        <td>1997</td>
+        <td>7+</td>
+        <td>4.7</td>
+        <td>13%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Robert Stevenson</td>
+        <td>Comedy,Crime,Family,Thriller</td>
+        <td>United States</td>
+        <td>English,French</td>
+        <td>116.0</td>
+        <td>1997-That Darn Cat</td>
+      </tr>
+      <tr>
+        <th>-3523469513735835042</th>
+        <td>Kazaam</td>
+        <td>1996</td>
+        <td>7+</td>
+        <td>3.0</td>
+        <td>6%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Paul Michael Glaser</td>
+        <td>Comedy,Family,Fantasy,Musical</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>93.0</td>
+        <td>1996-Kazaam</td>
+      </tr>
+      <tr>
+        <th>-8247203584118959311</th>
+        <td>Meet the Deedles</td>
+        <td>1998</td>
+        <td>7+</td>
+        <td>4.1</td>
+        <td>7%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Steve Boyum</td>
+        <td>Comedy,Family</td>
+        <td>United States</td>
+        <td>English</td>
+        <td>93.0</td>
+        <td>1998-Meet the Deedles</td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<footer class="text-muted py-5 bg-light">
+  <div class="container">
+    <p class="mb-1">UCF Data Analysis And Visualization Bootcamp - Project 2 - ETL </p>
+    <p class="mb-0">Visit the bootcamp <a href="https://bootcamp.ce.ucf.edu/data/" target="_blank">web page</a>.</p>
+  </div>
+</footer>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>

@@ -39,3 +39,9 @@ img {
   height:auto;
   border: 1px solid lightblue;
 }
+
+#data_footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
