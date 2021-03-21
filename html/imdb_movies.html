@@ -48,7 +48,7 @@
 <main class="container">
 
   <div class="row">
-    <div class="col-md py-3">
+    <div class="col-md">
       <h1>IMDB_Movies Table</h1>
       <br>
       <p> The IMDB_Movies table contains the movie data uploaded from 
@@ -60,9 +60,8 @@
   </div>
 
   <div class="row">
-    <div class="col-md py-3">
+    <div class="col-md">
       <h3>Table Structure</h3>
-      <br>
     </div>
   </div>
 
@@ -74,1038 +73,629 @@
           <td class="px-3"><strong>Description</strong></td>
         <tr style="text-align: center;">
           <td class="px-3">unique_id</td>
-          <td class="px-3">integer</td>
+          <td class="px-3">bigint</td>
           <td class="px-3">Unique identifier</td>
         </tr>
         <tr style="text-align: center;">
+          <td class="px-3">movie_title</td>
+          <td class="px-3">text</td>
+          <td class="px-3">Computed column concatenating the year<br>
+            and title, used to calculate the numeric unique_id via<br> 
+            the hash function.
+          </td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">imdb_title_id</td>
+          <td class="px-3">text</td>
+          <td class="px-3">title ID on IMDb</td>
+        </tr> 
+        <tr style="text-align: center;">
           <td class="px-3">title</td>
           <td class="px-3">text</td>
-          <td class="px-3">The Movie Title</td>
+          <td class="px-3">title name</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td class="px-3">original_title</td>
+          <td class="px-3">text</td>
+          <td class="px-3">original title name</td>
         </tr>
         <tr style="text-align: center;">
           <td class="px-3">year</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">The year of release</td>
-        </tr> 
-        <tr style="text-align: center;">
-          <td class="px-3">age</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">Target Age Group</td>
+          <td class="px-3">bigint</td>
+          <td class="px-3">Year of release</td>
         </tr>
         <tr style="text-align: center;">
-          <td class="px-3">imdb</td>
-          <td class="px-3">numeric</td>
-          <td class="px-3">IMDB index</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">rotten_tomatoes</td>
+          <td class="px-3">genre</td>
           <td class="px-3">text</td>
-          <td class="px-3">Rotten tomatoes rating %</td>
+          <td class="px-3">Movie genre</td>
         </tr>
         <tr style="text-align: center;">
-          <td class="px-3">netflix</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">If the movie is in Netflix: 0 = false, 1 = true</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">hulu</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">If the movie is in Hulu: 0 = false, 1 = true</td></tr>
-        <tr style="text-align: center;">
-          <td class="px-3">prime_video</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">If the movie is in Amazon Prime Video: 0 = false, 1 = true</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">disney_plus</td>
-          <td class="px-3">integer</td>
-          <td class="px-3">If the movie is in Disney+: 0 = false, 1 = true</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">directors</td>
-          <td class="px-3">text</td>
-          <td class="px-3">Movie Directors</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">genres</td>
-          <td class="px-3">text</td>
-          <td class="px-3">Genres</td>
+          <td class="px-3">duration</td>
+          <td class="px-3">bigint</td>
+          <td class="px-3">Duration in minutes</td>
         </tr>
         <tr style="text-align: center;">
           <td class="px-3">country</td>
           <td class="px-3">text</td>
-          <td class="px-3">Country of Release</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">language</td>
-          <td class="px-3">text</td>
-          <td class="px-3">Release language</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">runtime</td>
-          <td class="px-3">text</td>
-          <td class="px-3">Movie runtime</td>
-        </tr>
-        <tr style="text-align: center;">
-          <td class="px-3">movie_title</td>
-          <td class="px-3">Text</td>
-          <td class="px-3"><p>Computed column, concatenating the title and year.</p>
-            <p>Used to produce the primary key by <code>hash()</code> function.</p></td>
+          <td class="px-3">Movie country</td>
         </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
 
-
-
   <div class="row">
-    <div class="col-md py-3">
+    <div class="col-md">
+      <br>
       <h3>Table Data</h3>
       <p>We only show the first 100 rows here.</p>
-      <br>
     </div>
   </div>
 
   <table border="1" class="dataframe">
     <thead>
       <tr style="text-align: center;">
-        <th></th>
-        <th>title</th>
-        <th>year</th>
-        <th>age</th>
-        <th>imdb</th>
-        <th>rotten_tomatoes</th>
-        <th>netflix</th>
-        <th>hulu</th>
-        <th>prime_video</th>
-        <th>disney_plus</th>
-        <th>directors</th>
-        <th>genres</th>
-        <th>country</th>
-        <th>language</th>
-        <th>runtime</th>
-        <th>movie_title</th>
-      </tr>
-      <tr>
         <th>unique_id</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>movie_title</th>
+        <th>imdb_title_id</th>
+        <th>title</th>
+        <th>original_title</th>
+        <th>year</th>
+        <th>genre</th>
+        <th>duration</th>
+        <th>country</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th>-7952336440024175642</th>
-        <td>Inception</td>
-        <td>2010</td>
-        <td>13+</td>
-        <td>8.8</td>
-        <td>87%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Christopher Nolan</td>
-        <td>Action,Adventure,Sci-Fi,Thriller</td>
-        <td>United States,United Kingdom</td>
-        <td>English,Japanese,French</td>
-        <td>148.0</td>
-        <td>2010-Inception</td>
+        <th>-409077616621258993</th>
+        <td>1894-Miss Jerry</td>
+        <td>tt0000009</td>
+        <td>Miss Jerry</td>
+        <td>Miss Jerry</td>
+        <td>1894</td>
+        <td>Romance</td>
+        <td>45</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>2074459914621589465</th>
-        <td>The Matrix</td>
-        <td>1999</td>
-        <td>18+</td>
-        <td>8.7</td>
-        <td>87%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Lana Wachowski,Lilly Wachowski</td>
-        <td>Action,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>136.0</td>
-        <td>1999-The Matrix</td>
+        <th>866313333955130904</th>
+        <td>1906-The Story of the Kelly Gang</td>
+        <td>tt0000574</td>
+        <td>The Story of the Kelly Gang</td>
+        <td>The Story of the Kelly Gang</td>
+        <td>1906</td>
+        <td>Biography, Crime, Drama</td>
+        <td>70</td>
+        <td>Australia</td>
       </tr>
       <tr>
-        <th>5581745520648204</th>
-        <td>Avengers: Infinity War</td>
-        <td>2018</td>
-        <td>13+</td>
-        <td>8.5</td>
-        <td>84%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Anthony Russo,Joe Russo</td>
-        <td>Action,Adventure,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>149.0</td>
-        <td>2018-Avengers: Infinity War</td>
-      </tr>
-      <tr>
-        <th>6453648854757865414</th>
-        <td>Back to the Future</td>
-        <td>1985</td>
-        <td>7+</td>
-        <td>8.5</td>
-        <td>96%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Robert Zemeckis</td>
-        <td>Adventure,Comedy,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>116.0</td>
-        <td>1985-Back to the Future</td>
-      </tr>
-      <tr>
-        <th>6975831192963295021</th>
-        <td>The Good, the Bad and the Ugly</td>
-        <td>1966</td>
-        <td>18+</td>
-        <td>8.8</td>
-        <td>97%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Sergio Leone</td>
-        <td>Western</td>
-        <td>Italy,Spain,West Germany</td>
-        <td>Italian</td>
-        <td>161.0</td>
-        <td>1966-The Good, the Bad and the Ugly</td>
-      </tr>
-      <tr>
-        <th>6833721669868562863</th>
-        <td>Spider-Man: Into the Spider-Verse</td>
-        <td>2018</td>
-        <td>7+</td>
-        <td>8.4</td>
-        <td>97%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Bob Persichetti,Peter Ramsey,Rodney Rothman</td>
-        <td>Animation,Action,Adventure,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English,Spanish</td>
-        <td>117.0</td>
-        <td>2018-Spider-Man: Into the Spider-Verse</td>
-      </tr>
-      <tr>
-        <th>-4411218162772416053</th>
-        <td>The Pianist</td>
-        <td>2002</td>
-        <td>18+</td>
-        <td>8.5</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Roman Polanski</td>
-        <td>Biography,Drama,Music,War</td>
-        <td>United Kingdom,France,Poland,Germany</td>
-        <td>English,German,Russian</td>
-        <td>150.0</td>
-        <td>2002-The Pianist</td>
-      </tr>
-      <tr>
-        <th>-3215470335566885425</th>
-        <td>Django Unchained</td>
-        <td>2012</td>
-        <td>18+</td>
-        <td>8.4</td>
-        <td>87%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Quentin Tarantino</td>
-        <td>Drama,Western</td>
-        <td>United States</td>
-        <td>English,German,French,Italian</td>
-        <td>165.0</td>
-        <td>2012-Django Unchained</td>
-      </tr>
-      <tr>
-        <th>7427751583961610202</th>
-        <td>Raiders of the Lost Ark</td>
-        <td>1981</td>
-        <td>7+</td>
-        <td>8.4</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Steven Spielberg</td>
-        <td>Action,Adventure</td>
-        <td>United States</td>
-        <td>English,German,Hebrew,Spanish,Arabic,Nepali</td>
-        <td>115.0</td>
-        <td>1981-Raiders of the Lost Ark</td>
-      </tr>
-      <tr>
-        <th>4525085387001197800</th>
-        <td>Inglourious Basterds</td>
-        <td>2009</td>
-        <td>18+</td>
-        <td>8.3</td>
-        <td>89%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Quentin Tarantino</td>
-        <td>Adventure,Drama,War</td>
-        <td>Germany,United States</td>
-        <td>English,German,French,Italian</td>
-        <td>153.0</td>
-        <td>2009-Inglourious Basterds</td>
-      </tr>
-      <tr>
-        <th>-1779134919290185609</th>
-        <td>Taxi Driver</td>
-        <td>1976</td>
-        <td>18+</td>
-        <td>8.3</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Martin Scorsese</td>
-        <td>Crime,Drama</td>
-        <td>United States</td>
-        <td>English,Spanish</td>
-        <td>114.0</td>
-        <td>1976-Taxi Driver</td>
-      </tr>
-      <tr>
-        <th>-5699550305441655323</th>
-        <td>3 Idiots</td>
-        <td>2009</td>
-        <td>13+</td>
-        <td>8.4</td>
-        <td>100%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Rajkumar Hirani</td>
-        <td>Comedy,Drama</td>
-        <td>India</td>
-        <td>Hindi,English</td>
-        <td>170.0</td>
-        <td>2009-3 Idiots</td>
-      </tr>
-      <tr>
-        <th>-1405221980004478718</th>
-        <td>Pan's Labyrinth</td>
-        <td>2006</td>
-        <td>18+</td>
-        <td>8.2</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Guillermo del Toro</td>
-        <td>Drama,Fantasy,War</td>
-        <td>Mexico,Spain</td>
-        <td>Spanish</td>
-        <td>118.0</td>
-        <td>2006-Pan's Labyrinth</td>
-      </tr>
-      <tr>
-        <th>-4880385338756220486</th>
-        <td>Room</td>
-        <td>2015</td>
-        <td>18+</td>
-        <td>8.1</td>
-        <td>93%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Lenny Abrahamson</td>
-        <td>Drama,Thriller</td>
-        <td>Ireland,Canada,United Kingdom,United States</td>
-        <td>English</td>
-        <td>118.0</td>
-        <td>2015-Room</td>
-      </tr>
-      <tr>
-        <th>981223881962063234</th>
-        <td>Monty Python and the Holy Grail</td>
-        <td>1975</td>
-        <td>7+</td>
-        <td>8.2</td>
-        <td>97%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Terry Gilliam,Terry Jones</td>
-        <td>Adventure,Comedy,Fantasy</td>
-        <td>United Kingdom</td>
-        <td>English,French,Latin</td>
-        <td>91.0</td>
-        <td>1975-Monty Python and the Holy Grail</td>
-      </tr>
-      <tr>
-        <th>-7779070442671236961</th>
-        <td>Once Upon a Time in the West</td>
-        <td>1968</td>
-        <td>13+</td>
-        <td>8.5</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Sergio Leone</td>
-        <td>Western</td>
-        <td>Italy,United States</td>
-        <td>Italian,English,Spanish</td>
-        <td>165.0</td>
-        <td>1968-Once Upon a Time in the West</td>
-      </tr>
-      <tr>
-        <th>-3446596011464009495</th>
-        <td>Indiana Jones and the Last Crusade</td>
-        <td>1989</td>
-        <td>13+</td>
-        <td>8.2</td>
-        <td>88%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Steven Spielberg</td>
-        <td>Action,Adventure</td>
-        <td>United States</td>
-        <td>English,German,Greek,Arabic</td>
-        <td>127.0</td>
-        <td>1989-Indiana Jones and the Last Crusade</td>
-      </tr>
-      <tr>
-        <th>6528161562567992249</th>
-        <td>Groundhog Day</td>
-        <td>1993</td>
-        <td>7+</td>
-        <td>8.0</td>
-        <td>96%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Harold Ramis</td>
-        <td>Comedy,Fantasy,Romance</td>
-        <td>United States</td>
-        <td>English,French,Italian</td>
-        <td>101.0</td>
-        <td>1993-Groundhog Day</td>
-      </tr>
-      <tr>
-        <th>3879998892775256587</th>
-        <td>The King's Speech</td>
-        <td>2010</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Tom Hooper</td>
-        <td>Biography,Drama,History</td>
-        <td>United Kingdom,United States,Australia</td>
-        <td>English</td>
-        <td>118.0</td>
-        <td>2010-The King's Speech</td>
-      </tr>
-      <tr>
-        <th>3119400618385890284</th>
-        <td>Her</td>
-        <td>2013</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Spike Jonze</td>
-        <td>Drama,Romance,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>126.0</td>
-        <td>2013-Her</td>
-      </tr>
-      <tr>
-        <th>-4152424920663729810</th>
-        <td>There Will Be Blood</td>
-        <td>2007</td>
-        <td>18+</td>
-        <td>8.2</td>
-        <td>91%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Paul Thomas Anderson</td>
+        <th>838600562071848784</th>
+        <td>1911-Den sorte drøm</td>
+        <td>tt0001892</td>
+        <td>Den sorte drøm</td>
+        <td>Den sorte drøm</td>
+        <td>1911</td>
         <td>Drama</td>
-        <td>United States</td>
-        <td>English,American Sign Language</td>
-        <td>158.0</td>
-        <td>2007-There Will Be Blood</td>
+        <td>53</td>
+        <td>Germany, Denmark</td>
       </tr>
       <tr>
-        <th>8083334406242012636</th>
-        <td>The Social Network</td>
-        <td>2010</td>
-        <td>13+</td>
-        <td>7.7</td>
-        <td>96%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>David Fincher</td>
-        <td>Biography,Drama</td>
-        <td>United States</td>
-        <td>English,French</td>
-        <td>120.0</td>
-        <td>2010-The Social Network</td>
+        <th>4145386050906707501</th>
+        <td>1912-Cleopatra</td>
+        <td>tt0002101</td>
+        <td>Cleopatra</td>
+        <td>Cleopatra</td>
+        <td>1912</td>
+        <td>Drama, History</td>
+        <td>100</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>-3726812396356721537</th>
-        <td>Dallas Buyers Club</td>
-        <td>2013</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>93%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Jean-Marc Vallée</td>
-        <td>Biography,Drama</td>
-        <td>United States</td>
-        <td>English,Japanese</td>
-        <td>117.0</td>
-        <td>2013-Dallas Buyers Club</td>
+        <th>-1455654637378694813</th>
+        <td>1911-L'Inferno</td>
+        <td>tt0002130</td>
+        <td>L'Inferno</td>
+        <td>L'Inferno</td>
+        <td>1911</td>
+        <td>Adventure, Drama, Fantasy</td>
+        <td>68</td>
+        <td>Italy</td>
       </tr>
       <tr>
-        <th>-2114739170992037662</th>
-        <td>The Perks of Being a Wallflower</td>
-        <td>2012</td>
-        <td>13+</td>
-        <td>8.0</td>
-        <td>86%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Stephen Chbosky</td>
-        <td>Drama,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>103.0</td>
-        <td>2012-The Perks of Being a Wallflower</td>
+        <th>-4800939534601912561</th>
+        <td>1912-From the Manger to the Cross; or, Jesus of Nazareth</td>
+        <td>tt0002199</td>
+        <td>From the Manger to the Cross; or, Jesus of Nazareth</td>
+        <td>From the Manger to the Cross; or, Jesus of Nazareth</td>
+        <td>1912</td>
+        <td>Biography, Drama</td>
+        <td>60</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>-4254078041168581628</th>
-        <td>Life of Brian</td>
-        <td>1979</td>
-        <td>18+</td>
-        <td>8.1</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Terry Jones</td>
-        <td>Comedy</td>
-        <td>United Kingdom</td>
-        <td>English,Latin</td>
-        <td>94.0</td>
-        <td>1979-Life of Brian</td>
+        <th>-975413104007653414</th>
+        <td>1919-Madame DuBarry</td>
+        <td>tt0002423</td>
+        <td>Madame DuBarry</td>
+        <td>Madame DuBarry</td>
+        <td>1919</td>
+        <td>Biography, Drama, Romance</td>
+        <td>85</td>
+        <td>Germany</td>
       </tr>
       <tr>
-        <th>3300852604112838026</th>
-        <td>Ex Machina</td>
-        <td>2015</td>
-        <td>18+</td>
-        <td>7.7</td>
-        <td>92%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Alex Garland</td>
-        <td>Drama,Mystery,Sci-Fi,Thriller</td>
-        <td>United Kingdom,United States</td>
-        <td>English</td>
-        <td>108.0</td>
-        <td>2015-Ex Machina</td>
+        <th>2832403722597186395</th>
+        <td>1913-Quo Vadis?</td>
+        <td>tt0002445</td>
+        <td>Quo Vadis?</td>
+        <td>Quo Vadis?</td>
+        <td>1913</td>
+        <td>Drama, History</td>
+        <td>120</td>
+        <td>Italy</td>
       </tr>
       <tr>
-        <th>565207823831268600</th>
-        <td>Silver Linings Playbook</td>
-        <td>2012</td>
-        <td>18+</td>
-        <td>7.7</td>
-        <td>92%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>David O. Russell</td>
-        <td>Comedy,Drama,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>122.0</td>
-        <td>2012-Silver Linings Playbook</td>
+        <th>7990215906021253278</th>
+        <td>1912-Independenta Romaniei</td>
+        <td>tt0002452</td>
+        <td>Independenta Romaniei</td>
+        <td>Independenta Romaniei</td>
+        <td>1912</td>
+        <td>History, War</td>
+        <td>120</td>
+        <td>Romania</td>
       </tr>
       <tr>
-        <th>-6145883226329640238</th>
-        <td>District 9</td>
-        <td>2009</td>
-        <td>18+</td>
-        <td>7.9</td>
-        <td>90%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Neill Blomkamp</td>
-        <td>Action,Sci-Fi,Thriller</td>
-        <td>South Africa,United States,New Zealand,Canada</td>
-        <td>English,Nyanja,Afrikaans,Zulu,Xhosa,Southern Sotho</td>
-        <td>112.0</td>
-        <td>2009-District 9</td>
-      </tr>
-      <tr>
-        <th>6704231909678131143</th>
-        <td>The Irishman</td>
-        <td>2019</td>
-        <td>18+</td>
-        <td>7.9</td>
-        <td>96%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Martin Scorsese</td>
-        <td>Biography,Crime,Drama</td>
-        <td>United States</td>
-        <td>English,Italian,Latin,Spanish,German</td>
-        <td>209.0</td>
-        <td>2019-The Irishman</td>
-      </tr>
-      <tr>
-        <th>-8282758906916226035</th>
-        <td>Moon</td>
-        <td>2009</td>
-        <td>18+</td>
-        <td>7.9</td>
-        <td>90%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Duncan Jones</td>
-        <td>Drama,Mystery,Sci-Fi</td>
-        <td>United Kingdom,United States</td>
-        <td>English,Spanish</td>
-        <td>97.0</td>
-        <td>2009-Moon</td>
-      </tr>
-      <tr>
-        <th>5652108532252143344</th>
-        <td>Marriage Story</td>
-        <td>2019</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>95%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Noah Baumbach</td>
-        <td>Comedy,Drama,Romance</td>
-        <td>United Kingdom,United States</td>
-        <td>English,Spanish</td>
-        <td>137.0</td>
-        <td>2019-Marriage Story</td>
-      </tr>
-      <tr>
-        <th>-3489804693240847759</th>
-        <td>Drive</td>
-        <td>2011</td>
-        <td>18+</td>
-        <td>7.8</td>
-        <td>92%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Nicolas Winding Refn</td>
-        <td>Crime,Drama</td>
-        <td>United States</td>
-        <td>English,Spanish</td>
-        <td>100.0</td>
-        <td>2011-Drive</td>
-      </tr>
-      <tr>
-        <th>5495624703230656094</th>
-        <td>Incredibles 2</td>
-        <td>2018</td>
-        <td>7+</td>
-        <td>7.6</td>
-        <td>94%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Brad Bird</td>
-        <td>Animation,Action,Adventure,Comedy,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>118.0</td>
-        <td>2018-Incredibles 2</td>
-      </tr>
-      <tr>
-        <th>-1988295671468246365</th>
-        <td>Dangal</td>
-        <td>2016</td>
-        <td>7+</td>
-        <td>8.4</td>
-        <td>88%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Nitesh Tiwari</td>
-        <td>Action,Biography,Drama,Sport</td>
-        <td>India</td>
-        <td>Hindi</td>
-        <td>161.0</td>
-        <td>2016-Dangal</td>
-      </tr>
-      <tr>
-        <th>-3253723447861797586</th>
-        <td>Klaus</td>
-        <td>2019</td>
-        <td>7+</td>
-        <td>8.2</td>
-        <td>94%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Sergio Pablos,Carlos Martínez López</td>
-        <td>Animation,Adventure,Comedy,Family</td>
-        <td>Spain</td>
-        <td>English,Saami</td>
-        <td>96.0</td>
-        <td>2019-Klaus</td>
-      </tr>
-      <tr>
-        <th>-1230457532085233202</th>
-        <td>Minority Report</td>
-        <td>2002</td>
-        <td>13+</td>
-        <td>7.6</td>
-        <td>90%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Steven Spielberg</td>
-        <td>Action,Crime,Mystery,Sci-Fi,Thriller</td>
-        <td>United States</td>
-        <td>English,Swedish</td>
-        <td>145.0</td>
-        <td>2002-Minority Report</td>
-      </tr>
-      <tr>
-        <th>-1665321405116440813</th>
-        <td>Mystic River</td>
-        <td>2003</td>
-        <td>18+</td>
-        <td>7.9</td>
-        <td>88%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Clint Eastwood</td>
-        <td>Crime,Drama,Mystery,Thriller</td>
-        <td>United States,Australia</td>
-        <td>English</td>
-        <td>138.0</td>
-        <td>2003-Mystic River</td>
-      </tr>
-      <tr>
-        <th>8113512481331486350</th>
-        <td>Like Stars on Earth</td>
-        <td>2007</td>
-        <td>7+</td>
-        <td>8.4</td>
-        <td>91%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Aamir Khan,Amole Gupte</td>
-        <td>Drama,Family</td>
-        <td>India</td>
-        <td>Hindi,English</td>
-        <td>165.0</td>
-        <td>2007-Like Stars on Earth</td>
-      </tr>
-      <tr>
-        <th>8403087602913339967</th>
-        <td>Ferris Bueller's Day Off</td>
-        <td>1986</td>
-        <td>13+</td>
-        <td>7.8</td>
-        <td>80%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>John Hughes</td>
-        <td>Comedy</td>
-        <td>United States</td>
-        <td>English,German</td>
-        <td>103.0</td>
-        <td>1986-Ferris Bueller's Day Off</td>
-      </tr>
-      <tr>
-        <th>4996172555338086893</th>
-        <td>Despicable Me</td>
-        <td>2010</td>
-        <td>7+</td>
-        <td>7.6</td>
-        <td>81%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Pierre Coffin,Chris Renaud</td>
-        <td>Animation,Comedy,Family,Fantasy</td>
-        <td>United States,France</td>
-        <td>English</td>
-        <td>95.0</td>
-        <td>2010-Despicable Me</td>
-      </tr>
-      <tr>
-        <th>-3129789729994087683</th>
-        <td>Hell or High Water</td>
-        <td>2016</td>
-        <td>18+</td>
-        <td>7.6</td>
-        <td>97%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>David Mackenzie</td>
-        <td>Action,Crime,Drama,Thriller,Western</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>102.0</td>
-        <td>2016-Hell or High Water</td>
-      </tr>
-      <tr>
-        <th>-3005228419787270254</th>
-        <td>Sin City</td>
-        <td>2005</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>77%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Frank Miller,Robert Rodriguez,Quentin Tarantino</td>
-        <td>Crime,Thriller</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>124.0</td>
-        <td>2005-Sin City</td>
-      </tr>
-      <tr>
-        <th>-4538404318840730558</th>
-        <td>Ip Man</td>
-        <td>2008</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>85%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Wilson Yip</td>
-        <td>Action,Adventure,Biography,Drama,History</td>
-        <td>Hong Kong,China</td>
-        <td>Cantonese,Mandarin,Japanese</td>
-        <td>106.0</td>
-        <td>2008-Ip Man</td>
-      </tr>
-      <tr>
-        <th>-4559416784030698820</th>
-        <td>Indiana Jones and the Temple of Doom</td>
-        <td>1984</td>
-        <td>7+</td>
-        <td>7.6</td>
-        <td>85%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Steven Spielberg</td>
-        <td>Action,Adventure</td>
-        <td>United States</td>
-        <td>English,Sinhalese,Hindi</td>
-        <td>118.0</td>
-        <td>1984-Indiana Jones and the Temple of Doom</td>
-      </tr>
-      <tr>
-        <th>-999494372027312881</th>
-        <td>The Theory of Everything</td>
-        <td>2014</td>
-        <td>13+</td>
-        <td>7.7</td>
-        <td>79%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>James Marsh</td>
-        <td>Biography,Drama,Romance</td>
-        <td>United Kingdom,Japan,United States</td>
-        <td>English,French</td>
-        <td>123.0</td>
-        <td>2014-The Theory of Everything</td>
-      </tr>
-      <tr>
-        <th>-6383178768632385522</th>
-        <td>The Pursuit of Happyness</td>
-        <td>2006</td>
-        <td>13+</td>
-        <td>8.0</td>
-        <td>67%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Gabriele Muccino</td>
-        <td>Biography,Drama</td>
-        <td>United States</td>
-        <td>English,Cantonese</td>
-        <td>117.0</td>
-        <td>2006-The Pursuit of Happyness</td>
-      </tr>
-      <tr>
-        <th>1058765137244310498</th>
-        <td>Senna</td>
-        <td>2010</td>
-        <td>13+</td>
-        <td>8.5</td>
-        <td>93%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Asif Kapadia</td>
-        <td>Documentary,Biography,Sport</td>
-        <td>United Kingdom,France,United States</td>
-        <td>English,Portuguese,French,Japanese</td>
-        <td>106.0</td>
-        <td>2010-Senna</td>
-      </tr>
-      <tr>
-        <th>-2228487709582040339</th>
-        <td>Scott Pilgrim vs. the World</td>
-        <td>2010</td>
-        <td>13+</td>
-        <td>7.5</td>
-        <td>81%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Edgar Wright</td>
-        <td>Action,Comedy,Fantasy,Romance</td>
-        <td>United States,United Kingdom,Canada,Japan</td>
-        <td>English</td>
-        <td>112.0</td>
-        <td>2010-Scott Pilgrim vs. the World</td>
-      </tr>
-      <tr>
-        <th>-6794387818170486220</th>
-        <td>Magnolia</td>
-        <td>1999</td>
-        <td>18+</td>
-        <td>8.0</td>
-        <td>83%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Paul Thomas Anderson</td>
+        <th>-5118168199001739294</th>
+        <td>1912-Richard III</td>
+        <td>tt0002461</td>
+        <td>Richard III</td>
+        <td>Richard III</td>
+        <td>1912</td>
         <td>Drama</td>
-        <td>United States</td>
-        <td>English,German,French</td>
-        <td>188.0</td>
-        <td>1999-Magnolia</td>
+        <td>55</td>
+        <td>France, USA</td>
       </tr>
       <tr>
-        <th>8001444078243623482</th>
-        <td>The Hateful Eight</td>
-        <td>2015</td>
-        <td>18+</td>
-        <td>7.8</td>
-        <td>75%</td>
-        <td>1</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Quentin Tarantino</td>
-        <td>Crime,Drama,Mystery,Thriller,Western</td>
-        <td>United States</td>
-        <td>English,Spanish,French</td>
-        <td>168.0</td>
-        <td>2015-The Hateful Eight</td>
+        <th>-4795003359166680580</th>
+        <td>1913-Atlantis</td>
+        <td>tt0002646</td>
+        <td>Atlantis</td>
+        <td>Atlantis</td>
+        <td>1913</td>
+        <td>Drama</td>
+        <td>121</td>
+        <td>Denmark</td>
+      </tr>
+      <tr>
+        <th>-5163024338247588478</th>
+        <td>1913-Fantômas - À l'ombre de la guillotine</td>
+        <td>tt0002844</td>
+        <td>Fantômas - À l'ombre de la guillotine</td>
+        <td>Fantômas - À l'ombre de la guillotine</td>
+        <td>1913</td>
+        <td>Crime, Drama</td>
+        <td>54</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <th>-6372539164316470512</th>
+        <td>1913-Il calvario di una madre</td>
+        <td>tt0003014</td>
+        <td>Il calvario di una madre</td>
+        <td>Ingeborg Holm</td>
+        <td>1913</td>
+        <td>Drama</td>
+        <td>96</td>
+        <td>Sweden</td>
+      </tr>
+      <tr>
+        <th>-7620275991125455373</th>
+        <td>1913-Juve contre Fantômas</td>
+        <td>tt0003037</td>
+        <td>Juve contre Fantômas</td>
+        <td>Juve contre Fantômas</td>
+        <td>1913</td>
+        <td>Crime, Drama</td>
+        <td>61</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <th>-6495032400941820807</th>
+        <td>1914-Ma l'amor mio non muore...</td>
+        <td>tt0003102</td>
+        <td>Ma l'amor mio non muore...</td>
+        <td>Ma l'amor mio non muore...</td>
+        <td>1914</td>
+        <td>Drama</td>
+        <td>90</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <th>-1523949282045524391</th>
+        <td>1914-Maudite soit la guerre</td>
+        <td>tt0003131</td>
+        <td>Maudite soit la guerre</td>
+        <td>Maudite soit la guerre</td>
+        <td>1914</td>
+        <td>Drama, War</td>
+        <td>50</td>
+        <td>Belgium</td>
+      </tr>
+      <tr>
+        <th>-4717646979144295378</th>
+        <td>1913-Le mort qui tue</td>
+        <td>tt0003165</td>
+        <td>Le mort qui tue</td>
+        <td>Le mort qui tue</td>
+        <td>1913</td>
+        <td>Crime, Drama, Mystery</td>
+        <td>90</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <th>645798932456372042</th>
+        <td>1914-Amore di madre</td>
+        <td>tt0003167</td>
+        <td>Amore di madre</td>
+        <td>Home, Sweet Home</td>
+        <td>1914</td>
+        <td>Drama</td>
+        <td>55</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-6043225364057798950</th>
+        <td>1913-Lo studente di Praga</td>
+        <td>tt0003419</td>
+        <td>Lo studente di Praga</td>
+        <td>Der Student von Prag</td>
+        <td>1913</td>
+        <td>Drama, Fantasy, Horror</td>
+        <td>85</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <th>7098988710820958685</th>
+        <td>1913-Traffic in Souls</td>
+        <td>tt0003471</td>
+        <td>Traffic in Souls</td>
+        <td>Traffic in Souls</td>
+        <td>1913</td>
+        <td>Crime, Drama</td>
+        <td>88</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-914086165187395939</th>
+        <td>1913-Gli ultimi giorni di Pompei</td>
+        <td>tt0003489</td>
+        <td>Gli ultimi giorni di Pompei</td>
+        <td>Gli ultimi giorni di Pompei</td>
+        <td>1913</td>
+        <td>Adventure, Drama</td>
+        <td>88</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <th>-8512113396206604389</th>
+        <td>1915-Assunta Spina</td>
+        <td>tt0003637</td>
+        <td>Assunta Spina</td>
+        <td>Assunta Spina</td>
+        <td>1915</td>
+        <td>Drama</td>
+        <td>72</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <th>-1684731575469919528</th>
+        <td>1914-The Avenging Conscience: or 'Thou Shalt Not Kill'</td>
+        <td>tt0003643</td>
+        <td>The Avenging Conscience: or 'Thou Shalt Not Kill'</td>
+        <td>The Avenging Conscience: or 'Thou Shalt Not Kill'</td>
+        <td>1914</td>
+        <td>Crime, Drama, Horror</td>
+        <td>78</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>822322115165582000</th>
+        <td>1914-The Bargain</td>
+        <td>tt0003657</td>
+        <td>The Bargain</td>
+        <td>The Bargain</td>
+        <td>1914</td>
+        <td>Western</td>
+        <td>70</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>7959384583537367571</th>
+        <td>1914-Cabiria</td>
+        <td>tt0003740</td>
+        <td>Cabiria</td>
+        <td>Cabiria</td>
+        <td>1914</td>
+        <td>Adventure, Drama, History</td>
+        <td>148</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <th>4481678469568358242</th>
+        <td>1914-Cinderella</td>
+        <td>tt0003772</td>
+        <td>Cinderella</td>
+        <td>Cinderella</td>
+        <td>1914</td>
+        <td>Fantasy, Drama</td>
+        <td>52</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-360906093215030710</th>
+        <td>1913-L'enfant de Paris</td>
+        <td>tt0003883</td>
+        <td>L'enfant de Paris</td>
+        <td>L'enfant de Paris</td>
+        <td>1913</td>
+        <td>Crime, Drama</td>
+        <td>124</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <th>4629474251092391698</th>
+        <td>1914-Fantômas contre Fantômas</td>
+        <td>tt0003930</td>
+        <td>Fantômas contre Fantômas</td>
+        <td>Fantômas contre Fantômas</td>
+        <td>1914</td>
+        <td>Crime, Drama</td>
+        <td>59</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <th>-2085917174507307102</th>
+        <td>1914-A Florida Enchantment</td>
+        <td>tt0003973</td>
+        <td>A Florida Enchantment</td>
+        <td>A Florida Enchantment</td>
+        <td>1914</td>
+        <td>Comedy</td>
+        <td>63</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-4310334843021677546</th>
+        <td>1915-Der Golem</td>
+        <td>tt0004026</td>
+        <td>Der Golem</td>
+        <td>Der Golem</td>
+        <td>1915</td>
+        <td>Horror</td>
+        <td>60</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <th>-8607076649034996380</th>
+        <td>1914-Det hemmelighedsfulde X</td>
+        <td>tt0004066</td>
+        <td>Det hemmelighedsfulde X</td>
+        <td>Det hemmelighedsfulde X</td>
+        <td>1914</td>
+        <td>Drama, Mystery</td>
+        <td>84</td>
+        <td>Denmark</td>
+      </tr>
+      <tr>
+        <th>-6253054420287254046</th>
+        <td>1914-His Majesty, the Scarecrow of Oz</td>
+        <td>tt0004099</td>
+        <td>His Majesty, the Scarecrow of Oz</td>
+        <td>His Majesty, the Scarecrow of Oz</td>
+        <td>1914</td>
+        <td>Family, Fantasy, Adventure</td>
+        <td>59</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-3266319184455375406</th>
+        <td>1915-Hypocrites</td>
+        <td>tt0004134</td>
+        <td>Hypocrites</td>
+        <td>Hypocrites</td>
+        <td>1915</td>
+        <td>Drama</td>
+        <td>54</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-4088910800575574659</th>
+        <td>1914-In the Land of the Head Hunters</td>
+        <td>tt0004150</td>
+        <td>In the Land of the Head Hunters</td>
+        <td>In the Land of the Head Hunters</td>
+        <td>1914</td>
+        <td>Drama, History</td>
+        <td>65</td>
+        <td>USA, Canada</td>
+      </tr>
+      <tr>
+        <th>5586358487836135979</th>
+        <td>1914-Judith of Bethulia</td>
+        <td>tt0004181</td>
+        <td>Judith of Bethulia</td>
+        <td>Judith of Bethulia</td>
+        <td>1914</td>
+        <td>Drama</td>
+        <td>61</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>7594811928018290035</th>
+        <td>1914-The Patchwork Girl of Oz</td>
+        <td>tt0004457</td>
+        <td>The Patchwork Girl of Oz</td>
+        <td>The Patchwork Girl of Oz</td>
+        <td>1914</td>
+        <td>Adventure, Family, Fantasy</td>
+        <td>81</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>2360218663526709562</th>
+        <td>1914-The Perils of Pauline</td>
+        <td>tt0004465</td>
+        <td>The Perils of Pauline</td>
+        <td>The Perils of Pauline</td>
+        <td>1914</td>
+        <td>Action, Adventure, Drama</td>
+        <td>199</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-27274133372367387</th>
+        <td>1914-The Squaw Man</td>
+        <td>tt0004635</td>
+        <td>The Squaw Man</td>
+        <td>The Squaw Man</td>
+        <td>1914</td>
+        <td>Action, Drama, Romance</td>
+        <td>74</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>3490884742016879935</th>
+        <td>1914-La madonnina del porto</td>
+        <td>tt0004681</td>
+        <td>La madonnina del porto</td>
+        <td>Tess of the Storm Country</td>
+        <td>1914</td>
+        <td>Drama</td>
+        <td>80</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>5717429587752384906</th>
+        <td>1914-Tillie's Punctured Romance</td>
+        <td>tt0004707</td>
+        <td>Tillie's Punctured Romance</td>
+        <td>Tillie's Punctured Romance</td>
+        <td>1914</td>
+        <td>Comedy</td>
+        <td>82</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>1387044093735139831</th>
+        <td>1915-A tolonc</td>
+        <td>tt0004712</td>
+        <td>A tolonc</td>
+        <td>A tolonc</td>
+        <td>1915</td>
+        <td>Drama</td>
+        <td>67</td>
+        <td>Hungary</td>
+      </tr>
+      <tr>
+        <th>-156890854273390411</th>
+        <td>1914-Uncle Tom's Cabin</td>
+        <td>tt0004743</td>
+        <td>Uncle Tom's Cabin</td>
+        <td>Uncle Tom's Cabin</td>
+        <td>1914</td>
+        <td>Drama</td>
+        <td>54</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>5914717947973159156</th>
+        <td>1914-The Virginian</td>
+        <td>tt0004766</td>
+        <td>The Virginian</td>
+        <td>The Virginian</td>
+        <td>1914</td>
+        <td>Western</td>
+        <td>55</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>3046028152770217857</th>
+        <td>1914-The Wishing Ring: An Idyll of Old England</td>
+        <td>tt0004825</td>
+        <td>The Wishing Ring: An Idyll of Old England</td>
+        <td>The Wishing Ring: An Idyll of Old England</td>
+        <td>1914</td>
+        <td>Comedy, Drama</td>
+        <td>54</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-6446017950734537759</th>
+        <td>1914-The Wrath of the Gods</td>
+        <td>tt0004838</td>
+        <td>The Wrath of the Gods</td>
+        <td>The Wrath of the Gods</td>
+        <td>1914</td>
+        <td>Drama, Romance</td>
+        <td>56</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>188394309934378456</th>
+        <td>1915-Alias Jimmy Valentine</td>
+        <td>tt0004872</td>
+        <td>Alias Jimmy Valentine</td>
+        <td>Alias Jimmy Valentine</td>
+        <td>1915</td>
+        <td>Crime, Drama</td>
+        <td>65</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-6095669746659622519</th>
+        <td>1915-Alice in Wonderland</td>
+        <td>tt0004873</td>
+        <td>Alice in Wonderland</td>
+        <td>Alice in Wonderland</td>
+        <td>1915</td>
+        <td>Adventure, Family, Fantasy</td>
+        <td>52</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-528387947247114597</th>
+        <td>1915-Nascita di una nazione</td>
+        <td>tt0004972</td>
+        <td>Nascita di una nazione</td>
+        <td>The Birth of a Nation</td>
+        <td>1915</td>
+        <td>Drama, History, War</td>
+        <td>195</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-850354816595814282</th>
+        <td>1915-Carmen</td>
+        <td>tt0005060</td>
+        <td>Carmen</td>
+        <td>Carmen</td>
+        <td>1915</td>
+        <td>Drama</td>
+        <td>59</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-2140951899698735966</th>
+        <td>1915-The Cheat</td>
+        <td>tt0005078</td>
+        <td>The Cheat</td>
+        <td>The Cheat</td>
+        <td>1915</td>
+        <td>Drama, Romance</td>
+        <td>59</td>
+        <td>USA</td>
       </tr>
       <tr>
         <th>...</th>
@@ -1117,916 +707,562 @@
         <td>...</td>
         <td>...</td>
         <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
       </tr>
       <tr>
-        <th>-7573076383062727985</th>
-        <td>Snow Dogs</td>
-        <td>2002</td>
-        <td>7+</td>
-        <td>5.2</td>
-        <td>25%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Brian Levant</td>
-        <td>Adventure,Comedy,Family,Sport</td>
-        <td>Canada,United States</td>
-        <td>English</td>
-        <td>99.0</td>
-        <td>2002-Snow Dogs</td>
+        <th>-2200760798534430625</th>
+        <td>2020-Charter</td>
+        <td>tt9850050</td>
+        <td>Charter</td>
+        <td>Charter</td>
+        <td>2020</td>
+        <td>Drama</td>
+        <td>94</td>
+        <td>Sweden, Norway, Denmark</td>
       </tr>
       <tr>
-        <th>-3632682785528826728</th>
-        <td>Dr. Dolittle 2</td>
-        <td>2001</td>
-        <td>7+</td>
-        <td>4.7</td>
-        <td>42%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Steve Carr</td>
-        <td>Comedy,Family,Fantasy</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>87.0</td>
-        <td>2001-Dr. Dolittle 2</td>
+        <th>-7264799861092822249</th>
+        <td>2019-Children of the Sea</td>
+        <td>tt9850064</td>
+        <td>Children of the Sea</td>
+        <td>Kaijû no kodomo</td>
+        <td>2019</td>
+        <td>Animation, Adventure, Drama</td>
+        <td>111</td>
+        <td>Japan</td>
       </tr>
       <tr>
-        <th>-7100990084429581041</th>
-        <td>Camp Nowhere</td>
-        <td>1994</td>
-        <td>7+</td>
-        <td>6.1</td>
-        <td>18%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Jonathan Prince</td>
-        <td>Adventure,Comedy,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>96.0</td>
-        <td>1994-Camp Nowhere</td>
+        <th>-1005984271938819620</th>
+        <td>2019-Bruno Manser - Die Stimme des Regenwaldes</td>
+        <td>tt9850264</td>
+        <td>Bruno Manser - Die Stimme des Regenwaldes</td>
+        <td>Bruno Manser - Die Stimme des Regenwaldes</td>
+        <td>2019</td>
+        <td>Adventure, Biography, Drama</td>
+        <td>142</td>
+        <td>Switzerland, Austria</td>
       </tr>
       <tr>
-        <th>-5735835122557753988</th>
-        <td>Honey I Blew Up the Kid</td>
-        <td>1992</td>
-        <td>7+</td>
-        <td>4.8</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Randal Kleiser</td>
-        <td>Adventure,Comedy,Family,Romance,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>1992-Honey I Blew Up the Kid</td>
+        <th>3911786973272508881</th>
+        <td>2020-Dreambuilders - La fabbrica dei sogni</td>
+        <td>tt9855978</td>
+        <td>Dreambuilders - La fabbrica dei sogni</td>
+        <td>Drømmebyggerne</td>
+        <td>2020</td>
+        <td>Animation, Adventure, Comedy</td>
+        <td>81</td>
+        <td>Denmark</td>
       </tr>
       <tr>
-        <th>4212499641698413857</th>
-        <td>One Magic Christmas</td>
-        <td>1985</td>
-        <td>all</td>
-        <td>6.5</td>
-        <td>47%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Phillip Borsos</td>
-        <td>Family,Fantasy</td>
-        <td>Canada,United States</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>1985-One Magic Christmas</td>
-      </tr>
-      <tr>
-        <th>7209058847937324042</th>
-        <td>The Computer Wore Tennis Shoes</td>
-        <td>1969</td>
-        <td>all</td>
-        <td>6.1</td>
-        <td>50%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Robert Butler</td>
-        <td>Comedy,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>91.0</td>
-        <td>1969-The Computer Wore Tennis Shoes</td>
-      </tr>
-      <tr>
-        <th>-3465913553958057627</th>
-        <td>102 Dalmatians</td>
-        <td>2000</td>
-        <td>all</td>
-        <td>4.9</td>
-        <td>31%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Kevin Lima</td>
-        <td>Adventure,Comedy,Family</td>
-        <td>United States,United Kingdom</td>
-        <td>English</td>
-        <td>100.0</td>
-        <td>2000-102 Dalmatians</td>
-      </tr>
-      <tr>
-        <th>5586652601777881796</th>
-        <td>The Santa Clause 3: The Escape Clause</td>
-        <td>2006</td>
-        <td>all</td>
-        <td>4.7</td>
-        <td>17%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Michael Lembeck</td>
-        <td>Adventure,Comedy,Family,Fantasy</td>
-        <td>United States,Canada</td>
-        <td>English</td>
-        <td>97.0</td>
-        <td>2006-The Santa Clause 3: The Escape Clause</td>
-      </tr>
-      <tr>
-        <th>-2434485242170242072</th>
-        <td>Return from Witch Mountain</td>
-        <td>1978</td>
-        <td>all</td>
-        <td>5.9</td>
-        <td>50%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>John Hough</td>
-        <td>Family,Adventure,Sci-Fi,Fantasy</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>95.0</td>
-        <td>1978-Return from Witch Mountain</td>
-      </tr>
-      <tr>
-        <th>6538980980894684968</th>
-        <td>Prom</td>
-        <td>2011</td>
-        <td>7+</td>
-        <td>5.4</td>
-        <td>36%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Joe Nussbaum</td>
-        <td>Comedy,Drama,Family,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>104.0</td>
-        <td>2011-Prom</td>
-      </tr>
-      <tr>
-        <th>3401576055716561294</th>
-        <td>The Wild</td>
-        <td>2006</td>
-        <td>all</td>
-        <td>5.3</td>
-        <td>19%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Lee Tamahori</td>
-        <td>Action,Adventure,Drama,Thriller</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>117.0</td>
-        <td>2006-The Wild</td>
-      </tr>
-      <tr>
-        <th>7440704511867552167</th>
-        <td>Valiant</td>
-        <td>2005</td>
-        <td>all</td>
-        <td>5.5</td>
-        <td>32%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Gary Chapman</td>
-        <td>Animation,Adventure,Comedy,Family,War</td>
-        <td>United Kingdom,United States</td>
-        <td>English</td>
-        <td>76.0</td>
-        <td>2005-Valiant</td>
-      </tr>
-      <tr>
-        <th>6952269802906789437</th>
-        <td>The Haunted Mansion</td>
-        <td>2003</td>
-        <td>7+</td>
-        <td>5.0</td>
-        <td>14%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Rob Minkoff</td>
-        <td>Comedy,Family,Fantasy,Horror,Mystery</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>99.0</td>
-        <td>2003-The Haunted Mansion</td>
-      </tr>
-      <tr>
-        <th>5033067556319030307</th>
-        <td>Jungle 2 Jungle</td>
-        <td>1997</td>
-        <td>7+</td>
-        <td>5.2</td>
-        <td>19%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>John Pasquin</td>
-        <td>Comedy,Family</td>
-        <td>United States,France</td>
-        <td>English</td>
-        <td>105.0</td>
-        <td>1997-Jungle 2 Jungle</td>
-      </tr>
-      <tr>
-        <th>5499997951943335797</th>
-        <td>Hannah Montana &amp; Miley Cyrus: Best of Both Worlds Concert</td>
-        <td>2008</td>
-        <td>all</td>
-        <td>2.4</td>
-        <td>73%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Bruce Hendricks</td>
-        <td>Documentary,Music</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>74.0</td>
-        <td>2008-Hannah Montana &amp; Miley Cyrus: Best of Both Worlds Concert</td>
-      </tr>
-      <tr>
-        <th>-7721722241008194551</th>
-        <td>Tom and Huck</td>
-        <td>1995</td>
-        <td>7+</td>
-        <td>5.5</td>
-        <td>25%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Peter Hewitt</td>
-        <td>Adventure,Comedy,Drama,Family,Romance,Western</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>97.0</td>
-        <td>1995-Tom and Huck</td>
-      </tr>
-      <tr>
-        <th>8186128278542761125</th>
-        <td>Young Black Stallion</td>
-        <td>2003</td>
-        <td>all</td>
-        <td>5.6</td>
-        <td>45%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Simon Wincer</td>
-        <td>Adventure,Family,Drama</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>50.0</td>
-        <td>2003-Young Black Stallion</td>
-      </tr>
-      <tr>
-        <th>-6765980834652031930</th>
-        <td>Pocahontas II: Journey to a New World</td>
-        <td>1998</td>
-        <td>all</td>
-        <td>4.9</td>
-        <td>29%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Tom Ellery,Bradley Raymond</td>
-        <td>Animation,Adventure,Drama,Family,Musical,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>72.0</td>
-        <td>1998-Pocahontas II: Journey to a New World</td>
-      </tr>
-      <tr>
-        <th>4481094842338847620</th>
-        <td>Cheetah</td>
-        <td>1989</td>
-        <td>all</td>
-        <td>6.0</td>
-        <td>50%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Jeff Blyth</td>
-        <td>Adventure,Drama,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>83.0</td>
-        <td>1989-Cheetah</td>
-      </tr>
-      <tr>
-        <th>6587126083898176644</th>
-        <td>The Fox and the Hound 2</td>
-        <td>2006</td>
-        <td>all</td>
-        <td>5.3</td>
-        <td>20%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Jim Kammerud</td>
-        <td>Animation,Adventure,Comedy,Family,Musical</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>69.0</td>
-        <td>2006-The Fox and the Hound 2</td>
-      </tr>
-      <tr>
-        <th>-3546466838122049153</th>
-        <td>Honey, We Shrunk Ourselves</td>
-        <td>1997</td>
-        <td>7+</td>
-        <td>5.0</td>
-        <td>25%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Dean Cundey</td>
-        <td>Action,Adventure,Comedy,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>74.0</td>
-        <td>1997-Honey, We Shrunk Ourselves</td>
-      </tr>
-      <tr>
-        <th>-6005575305278347723</th>
-        <td>The Jungle Book 2</td>
-        <td>2003</td>
-        <td>all</td>
-        <td>5.4</td>
-        <td>19%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Steve Trenbirth</td>
-        <td>Animation,Adventure,Family,Musical</td>
-        <td>United States,Australia</td>
-        <td>English</td>
-        <td>72.0</td>
-        <td>2003-The Jungle Book 2</td>
-      </tr>
-      <tr>
-        <th>8505411061926008516</th>
-        <td>I'll Be Home for Christmas</td>
-        <td>1998</td>
-        <td>all</td>
-        <td>5.5</td>
-        <td>23%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Arlene Sanford</td>
-        <td>Comedy,Family</td>
-        <td>United States,Canada</td>
-        <td>English</td>
-        <td>86.0</td>
-        <td>1998-I'll Be Home for Christmas</td>
-      </tr>
-      <tr>
-        <th>2700871433743337641</th>
-        <td>Confessions of a Teenage Drama Queen</td>
-        <td>2004</td>
-        <td>7+</td>
-        <td>4.6</td>
-        <td>14%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Sara Sugarman</td>
-        <td>Comedy,Family,Music,Romance</td>
-        <td>Germany,United States</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>2004-Confessions of a Teenage Drama Queen</td>
-      </tr>
-      <tr>
-        <th>-3226187732108579279</th>
-        <td>The Shaggy D.A.</td>
-        <td>1976</td>
-        <td>all</td>
-        <td>5.9</td>
-        <td>50%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Robert Stevenson</td>
-        <td>Comedy,Family,Fantasy</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>91.0</td>
-        <td>1976-The Shaggy D.A.</td>
-      </tr>
-      <tr>
-        <th>5424035853503344233</th>
-        <td>The Brave Little Toaster to the Rescue</td>
-        <td>1997</td>
-        <td>all</td>
-        <td>6.3</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Robert C. Ramirez,Patrick A. Ventura</td>
-        <td>Animation,Adventure,Family,Fantasy</td>
-        <td>United States</td>
-        <td>Chinese,Mandarin,Japanese,Korean,French,English</td>
-        <td>74.0</td>
-        <td>1997-The Brave Little Toaster to the Rescue</td>
-      </tr>
-      <tr>
-        <th>-1639717455781217437</th>
-        <td>Blank Check</td>
-        <td>1994</td>
-        <td>7+</td>
-        <td>5.3</td>
-        <td>9%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Rupert Wainwright</td>
-        <td>Comedy,Crime,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>93.0</td>
-        <td>1994-Blank Check</td>
-      </tr>
-      <tr>
-        <th>1588115762686753195</th>
-        <td>Cinderella II: Dreams Come True</td>
-        <td>2002</td>
-        <td>all</td>
-        <td>5.0</td>
-        <td>11%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>John Kafka</td>
-        <td>Animation,Family,Fantasy,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>73.0</td>
-        <td>2002-Cinderella II: Dreams Come True</td>
-      </tr>
-      <tr>
-        <th>7526791374923929749</th>
-        <td>Belle's Magical World</td>
-        <td>1998</td>
-        <td>all</td>
-        <td>5.4</td>
-        <td>17%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Bob Kline,Cullen Blaine,Dale Case,Daniel de la Vega,Barbara Dourmaskin-Case,Rick Leon,Burt Medall,Mitch Rochon</td>
-        <td>Animation,Comedy,Family,Fantasy,Musical,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>92.0</td>
-        <td>1998-Belle's Magical World</td>
-      </tr>
-      <tr>
-        <th>5280053728251681233</th>
-        <td>Tarzan &amp; Jane</td>
-        <td>2002</td>
-        <td>all</td>
-        <td>5.4</td>
-        <td>17%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Steve Loter,Victor Cook,Steve Loter,Don MacKinnon,Lisa Schaffer</td>
-        <td>Animation,Adventure,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>75.0</td>
-        <td>2002-Tarzan &amp; Jane</td>
-      </tr>
-      <tr>
-        <th>7476853883088387966</th>
-        <td>Operation Dumbo Drop</td>
-        <td>1995</td>
-        <td>7+</td>
-        <td>5.1</td>
-        <td>31%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Simon Wincer</td>
-        <td>Action,Adventure,Comedy,Drama,Family,War</td>
-        <td>United States</td>
-        <td>English,Vietnamese</td>
-        <td>107.0</td>
-        <td>1995-Operation Dumbo Drop</td>
-      </tr>
-      <tr>
-        <th>-3692747410830956729</th>
-        <td>Herbie Goes Bananas</td>
-        <td>1980</td>
-        <td>all</td>
-        <td>5.0</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Vincent McEveety</td>
-        <td>Adventure,Comedy,Family,Fantasy</td>
-        <td>United States</td>
-        <td>English,Spanish</td>
-        <td>100.0</td>
-        <td>1980-Herbie Goes Bananas</td>
-      </tr>
-      <tr>
-        <th>7209622975828586748</th>
-        <td>The Brave Little Toaster Goes to Mars</td>
-        <td>1998</td>
-        <td>all</td>
-        <td>5.7</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Robert C. Ramirez,Patrick A. Ventura</td>
-        <td>Animation,Adventure,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>73.0</td>
-        <td>1998-The Brave Little Toaster Goes to Mars</td>
-      </tr>
-      <tr>
-        <th>-1689860110809818807</th>
-        <td>First Kid</td>
-        <td>1996</td>
-        <td>7+</td>
-        <td>5.2</td>
-        <td>23%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>David Mickey Evans</td>
-        <td>Family,Comedy</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>101.0</td>
-        <td>1996-First Kid</td>
-      </tr>
-      <tr>
-        <th>5211772224999246022</th>
-        <td>College Road Trip</td>
-        <td>2008</td>
-        <td>all</td>
-        <td>4.3</td>
-        <td>12%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Roger Kumble</td>
-        <td>Adventure,Comedy,Drama,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>83.0</td>
-        <td>2008-College Road Trip</td>
-      </tr>
-      <tr>
-        <th>3489783245154713529</th>
-        <td>Life with Mikey</td>
-        <td>1993</td>
-        <td>7+</td>
-        <td>5.6</td>
-        <td>25%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>James Lapine</td>
-        <td>Comedy,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>91.0</td>
-        <td>1993-Life with Mikey</td>
-      </tr>
-      <tr>
-        <th>-6605205276000025322</th>
-        <td>Sacred Planet</td>
-        <td>2004</td>
-        <td>all</td>
-        <td>6.1</td>
-        <td>58%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Jon Long</td>
-        <td>Documentary,Short</td>
-        <td>Canada,Malaysia,United States</td>
-        <td>English</td>
-        <td>40.0</td>
-        <td>2004-Sacred Planet</td>
-      </tr>
-      <tr>
-        <th>3287742666750189027</th>
-        <td>The Hunchback of Notre Dame II</td>
-        <td>2002</td>
-        <td>all</td>
-        <td>4.7</td>
-        <td>30%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Bradley Raymond</td>
-        <td>Animation,Adventure,Comedy,Drama,Family,Musical,Romance</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>68.0</td>
-        <td>2002-The Hunchback of Notre Dame II</td>
-      </tr>
-      <tr>
-        <th>5161683120441374486</th>
-        <td>Life-Size 2</td>
+        <th>5775465990335159261</th>
+        <td>2018-Nightmare Tenant</td>
+        <td>tt9855990</td>
+        <td>Nightmare Tenant</td>
+        <td>Nightmare Tenant</td>
         <td>2018</td>
-        <td>16+</td>
-        <td>4.8</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Steven K. Tsuchida</td>
-        <td>Comedy,Fantasy</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>81.0</td>
-        <td>2018-Life-Size 2</td>
+        <td>Thriller</td>
+        <td>90</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>6630382542981255746</th>
-        <td>The Million Dollar Duck</td>
-        <td>1971</td>
-        <td>all</td>
-        <td>5.9</td>
-        <td>17%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Vincent McEveety</td>
-        <td>Comedy,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>1971-The Million Dollar Duck</td>
+        <th>7796767304863784605</th>
+        <td>2019-Pan T.</td>
+        <td>tt9856606</td>
+        <td>Pan T.</td>
+        <td>Pan T.</td>
+        <td>2019</td>
+        <td>Comedy, Drama</td>
+        <td>103</td>
+        <td>Poland</td>
       </tr>
       <tr>
-        <th>5555656735883175395</th>
-        <td>America's Heart and Soul</td>
-        <td>2004</td>
-        <td>7+</td>
-        <td>5.1</td>
-        <td>50%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Louie Schwartzberg</td>
-        <td>Documentary</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>84.0</td>
-        <td>2004-America's Heart and Soul</td>
+        <th>2356715624171896411</th>
+        <td>2019-Hombres de piel dura</td>
+        <td>tt9859504</td>
+        <td>Hombres de piel dura</td>
+        <td>Hombres de piel dura</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>96</td>
+        <td>Argentina</td>
       </tr>
       <tr>
-        <th>-138744470611363652</th>
-        <td>Jonas Brothers: The Concert Experience</td>
-        <td>2009</td>
-        <td>all</td>
-        <td>1.6</td>
-        <td>24%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Bruce Hendricks</td>
-        <td>Documentary,Music</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>76.0</td>
-        <td>2009-Jonas Brothers: The Concert Experience</td>
+        <th>-6422422762038136758</th>
+        <td>2019-Falling Inn Love - Ristrutturazione con amore</td>
+        <td>tt9860728</td>
+        <td>Falling Inn Love - Ristrutturazione con amore</td>
+        <td>Falling Inn Love</td>
+        <td>2019</td>
+        <td>Comedy, Romance</td>
+        <td>98</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>8100389740231542477</th>
-        <td>The Country Bears</td>
-        <td>2002</td>
-        <td>all</td>
-        <td>4.1</td>
-        <td>29%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Peter Hastings</td>
-        <td>Comedy,Family,Music,Musical</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>88.0</td>
-        <td>2002-The Country Bears</td>
+        <th>-1343412572887332883</th>
+        <td>2019-Abduction 101</td>
+        <td>tt9860860</td>
+        <td>Abduction 101</td>
+        <td>Abduction 101</td>
+        <td>2019</td>
+        <td>Horror</td>
+        <td>77</td>
+        <td>USA</td>
       </tr>
       <tr>
-        <th>4762175489643802234</th>
-        <td>Inspector Gadget 2</td>
-        <td>2003</td>
-        <td>all</td>
-        <td>3.4</td>
-        <td>40%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Alex Zamm</td>
-        <td>Action,Comedy,Crime,Family,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>2003-Inspector Gadget 2</td>
+        <th>3733629223907569248</th>
+        <td>2019-Ali</td>
+        <td>tt9861522</td>
+        <td>Ali</td>
+        <td>Ali</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>110</td>
+        <td>Turkey</td>
       </tr>
       <tr>
-        <th>-8694262830484609763</th>
-        <td>Doug's 1st Movie</td>
-        <td>1999</td>
-        <td>all</td>
-        <td>5.0</td>
-        <td>26%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Maurice Joyce</td>
-        <td>Animation,Adventure,Comedy,Drama,Family,Fantasy,Sci-Fi</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>77.0</td>
-        <td>1999-Doug's 1st Movie</td>
+        <th>-4305363626947533743</th>
+        <td>2019-Urbanus: De Vuilnisheld</td>
+        <td>tt9863566</td>
+        <td>Urbanus: De Vuilnisheld</td>
+        <td>Urbanus: De Vuilnisheld</td>
+        <td>2019</td>
+        <td>Animation, Comedy</td>
+        <td>72</td>
+        <td>Belgium</td>
       </tr>
       <tr>
-        <th>2001289483810135400</th>
-        <td>A Kid in King Arthur's Court</td>
-        <td>1995</td>
-        <td>7+</td>
-        <td>4.7</td>
-        <td>5%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Michael Gottlieb</td>
-        <td>Adventure,Comedy,Family,Fantasy,Romance</td>
-        <td>United States,Hungary,United Kingdom</td>
-        <td>English</td>
-        <td>89.0</td>
-        <td>1995-A Kid in King Arthur's Court</td>
+        <th>944839130002336905</th>
+        <td>2019-Beyond the Line</td>
+        <td>tt9866208</td>
+        <td>Beyond the Line</td>
+        <td>Beyond the Line</td>
+        <td>2019</td>
+        <td>War</td>
+        <td>78</td>
+        <td>Canada</td>
       </tr>
       <tr>
-        <th>-4113550106739065477</th>
-        <td>George of the Jungle 2</td>
-        <td>2003</td>
-        <td>7+</td>
-        <td>3.3</td>
-        <td>17%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>David Grossman</td>
-        <td>Adventure,Comedy,Family</td>
-        <td>United States,Australia</td>
-        <td>English</td>
-        <td>87.0</td>
-        <td>2003-George of the Jungle 2</td>
+        <th>1016783906882061889</th>
+        <td>2019-Mon Ami Walid</td>
+        <td>tt9866344</td>
+        <td>Mon Ami Walid</td>
+        <td>Mon Ami Walid</td>
+        <td>2019</td>
+        <td>Comedy, Drama</td>
+        <td>72</td>
+        <td>Canada</td>
       </tr>
       <tr>
-        <th>7887286761011593515</th>
-        <td>That Darn Cat</td>
-        <td>1997</td>
-        <td>7+</td>
-        <td>4.7</td>
-        <td>13%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Robert Stevenson</td>
-        <td>Comedy,Crime,Family,Thriller</td>
-        <td>United States</td>
-        <td>English,French</td>
-        <td>116.0</td>
-        <td>1997-That Darn Cat</td>
+        <th>7897001281622194898</th>
+        <td>2018-Paranormal Investigation</td>
+        <td>tt9866700</td>
+        <td>Paranormal Investigation</td>
+        <td>Paranormal Investigation</td>
+        <td>2018</td>
+        <td>Horror, Thriller</td>
+        <td>92</td>
+        <td>France</td>
       </tr>
       <tr>
-        <th>-3523469513735835042</th>
-        <td>Kazaam</td>
-        <td>1996</td>
-        <td>7+</td>
-        <td>3.0</td>
-        <td>6%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Paul Michael Glaser</td>
-        <td>Comedy,Family,Fantasy,Musical</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>93.0</td>
-        <td>1996-Kazaam</td>
+        <th>2687372048458555028</th>
+        <td>2019-Gholamreza Takhti</td>
+        <td>tt9870726</td>
+        <td>Gholamreza Takhti</td>
+        <td>Gholamreza Takhti</td>
+        <td>2019</td>
+        <td>Biography, Drama, Sport</td>
+        <td>105</td>
+        <td>Iran</td>
       </tr>
       <tr>
-        <th>-8247203584118959311</th>
-        <td>Meet the Deedles</td>
-        <td>1998</td>
-        <td>7+</td>
-        <td>4.1</td>
-        <td>7%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>1</td>
-        <td>Steve Boyum</td>
-        <td>Comedy,Family</td>
-        <td>United States</td>
-        <td>English</td>
-        <td>93.0</td>
-        <td>1998-Meet the Deedles</td>
+        <th>-5868649459227032921</th>
+        <td>2019-Momenti di trascurabile felicità</td>
+        <td>tt9872556</td>
+        <td>Momenti di trascurabile felicità</td>
+        <td>Momenti di trascurabile felicità</td>
+        <td>2019</td>
+        <td>Comedy</td>
+        <td>93</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <th>-3407631500183524321</th>
+        <td>2019-Domovoy</td>
+        <td>tt9875852</td>
+        <td>Domovoy</td>
+        <td>Domovoy</td>
+        <td>2019</td>
+        <td>Comedy, Family, Fantasy</td>
+        <td>90</td>
+        <td>Russia</td>
+      </tr>
+      <tr>
+        <th>-9042409098630052459</th>
+        <td>2019-Koridor bessmertiya</td>
+        <td>tt9876160</td>
+        <td>Koridor bessmertiya</td>
+        <td>Koridor bessmertiya</td>
+        <td>2019</td>
+        <td>Drama, War</td>
+        <td>125</td>
+        <td>Russia</td>
+      </tr>
+      <tr>
+        <th>-2657627616784294344</th>
+        <td>2019-Nalpathiyonnu</td>
+        <td>tt9877340</td>
+        <td>Nalpathiyonnu</td>
+        <td>Nalpathiyonnu</td>
+        <td>2019</td>
+        <td>Drama, Romance</td>
+        <td>134</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-2851440237846223972</th>
+        <td>2019-Subharathri</td>
+        <td>tt9878242</td>
+        <td>Subharathri</td>
+        <td>Subharathri</td>
+        <td>2019</td>
+        <td>Drama, Romance</td>
+        <td>130</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-4813347016430736618</th>
+        <td>2019-Huisvrouwen bestaan niet 2</td>
+        <td>tt9878598</td>
+        <td>Huisvrouwen bestaan niet 2</td>
+        <td>Huisvrouwen bestaan niet 2</td>
+        <td>2019</td>
+        <td>Comedy</td>
+        <td>105</td>
+        <td>Netherlands</td>
+      </tr>
+      <tr>
+        <th>7583553404509297224</th>
+        <td>2019-Dulce Familia</td>
+        <td>tt9880982</td>
+        <td>Dulce Familia</td>
+        <td>Dulce Familia</td>
+        <td>2019</td>
+        <td>Comedy</td>
+        <td>101</td>
+        <td>Mexico, Chile</td>
+      </tr>
+      <tr>
+        <th>-7322732170173556271</th>
+        <td>2019-Aakashaganga II</td>
+        <td>tt9883042</td>
+        <td>Aakashaganga II</td>
+        <td>Aakashaganga II</td>
+        <td>2019</td>
+        <td>Horror</td>
+        <td>142</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-2159382519004307641</th>
+        <td>2020-Dream Horse</td>
+        <td>tt9883996</td>
+        <td>Dream Horse</td>
+        <td>Dream Horse</td>
+        <td>2020</td>
+        <td>Biography, Comedy, Drama</td>
+        <td>113</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <th>-8990432232462705678</th>
+        <td>2019-Munthiri Monchan</td>
+        <td>tt9886872</td>
+        <td>Munthiri Monchan</td>
+        <td>Munthiri Monchan</td>
+        <td>2019</td>
+        <td>Comedy, Romance</td>
+        <td>130</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-4724633338714841112</th>
+        <td>2019-Season of Love</td>
+        <td>tt9887520</td>
+        <td>Season of Love</td>
+        <td>Season of Love</td>
+        <td>2019</td>
+        <td>Comedy, Romance</td>
+        <td>105</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-5089949512731747958</th>
+        <td>2020-Bulletproof 2</td>
+        <td>tt9887580</td>
+        <td>Bulletproof 2</td>
+        <td>Bulletproof 2</td>
+        <td>2020</td>
+        <td>Action, Comedy</td>
+        <td>97</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>7504221300517808490</th>
+        <td>2020-Nasir</td>
+        <td>tt9890308</td>
+        <td>Nasir</td>
+        <td>Nasir</td>
+        <td>2020</td>
+        <td>Drama</td>
+        <td>85</td>
+        <td>India, Netherlands, Singapore</td>
+      </tr>
+      <tr>
+        <th>-8361271887237791736</th>
+        <td>2020-Mogul Mowgli</td>
+        <td>tt9892094</td>
+        <td>Mogul Mowgli</td>
+        <td>Mogul Mowgli</td>
+        <td>2020</td>
+        <td>Drama</td>
+        <td>90</td>
+        <td>UK, USA</td>
+      </tr>
+      <tr>
+        <th>-387302583128986912</th>
+        <td>2019-No Dorai</td>
+        <td>tt9892338</td>
+        <td>No Dorai</td>
+        <td>No Dorai</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>150</td>
+        <td>Bangladesh</td>
+      </tr>
+      <tr>
+        <th>-6409404272332108699</th>
+        <td>2019-Sathru</td>
+        <td>tt9894098</td>
+        <td>Sathru</td>
+        <td>Sathru</td>
+        <td>2019</td>
+        <td>Thriller</td>
+        <td>129</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-8250390742560680446</th>
+        <td>2019-Upin &amp; Ipin: Keris Siamang Tunggal</td>
+        <td>tt9894394</td>
+        <td>Upin &amp; Ipin: Keris Siamang Tunggal</td>
+        <td>Upin &amp; Ipin: Keris Siamang Tunggal</td>
+        <td>2019</td>
+        <td>Animation</td>
+        <td>100</td>
+        <td>Malaysia</td>
+      </tr>
+      <tr>
+        <th>919912400860272545</th>
+        <td>2020-Min pappa Marianne</td>
+        <td>tt9894440</td>
+        <td>Min pappa Marianne</td>
+        <td>Min pappa Marianne</td>
+        <td>2020</td>
+        <td>Comedy, Drama</td>
+        <td>110</td>
+        <td>Sweden</td>
+      </tr>
+      <tr>
+        <th>2883484622585016151</th>
+        <td>2019-VFW</td>
+        <td>tt9894470</td>
+        <td>VFW</td>
+        <td>VFW</td>
+        <td>2019</td>
+        <td>Action, Crime, Horror</td>
+        <td>92</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-5095899330564903568</th>
+        <td>2019-The Pilgrim's Progress</td>
+        <td>tt9896916</td>
+        <td>The Pilgrim's Progress</td>
+        <td>The Pilgrim's Progress</td>
+        <td>2019</td>
+        <td>Animation, Adventure, Family</td>
+        <td>108</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>-9094883021125990285</th>
+        <td>2020-Coffee &amp; Kareem</td>
+        <td>tt9898858</td>
+        <td>Coffee &amp; Kareem</td>
+        <td>Coffee &amp; Kareem</td>
+        <td>2020</td>
+        <td>Action, Comedy</td>
+        <td>88</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <th>4591928012852902890</th>
+        <td>2019-Ashoftegi</td>
+        <td>tt9899850</td>
+        <td>Ashoftegi</td>
+        <td>Ashoftegi</td>
+        <td>2019</td>
+        <td>Crime, Mystery, Thriller</td>
+        <td>86</td>
+        <td>Iran</td>
+      </tr>
+      <tr>
+        <th>4295729326260735065</th>
+        <td>2018-Columbus</td>
+        <td>tt9899880</td>
+        <td>Columbus</td>
+        <td>Columbus</td>
+        <td>2018</td>
+        <td>Comedy, Drama</td>
+        <td>82</td>
+        <td>Iran</td>
+      </tr>
+      <tr>
+        <th>-1632211139679261435</th>
+        <td>2019-Lupin III: La menzogna di Fujiko Mine</td>
+        <td>tt9900060</td>
+        <td>Lupin III: La menzogna di Fujiko Mine</td>
+        <td>Lupin the IIIrd: Mine Fujiko no Uso</td>
+        <td>2019</td>
+        <td>Animation, Adventure, Crime</td>
+        <td>58</td>
+        <td>Japan</td>
+      </tr>
+      <tr>
+        <th>-806176063051514026</th>
+        <td>2019-Kaithi</td>
+        <td>tt9900782</td>
+        <td>Kaithi</td>
+        <td>Kaithi</td>
+        <td>2019</td>
+        <td>Action, Thriller</td>
+        <td>145</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-7043615625551320486</th>
+        <td>2019-Jessie</td>
+        <td>tt9903716</td>
+        <td>Jessie</td>
+        <td>Jessie</td>
+        <td>2019</td>
+        <td>Horror, Thriller</td>
+        <td>106</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>9066673573778780633</th>
+        <td>2020-Enemy Lines</td>
+        <td>tt9904802</td>
+        <td>Enemy Lines</td>
+        <td>Enemy Lines</td>
+        <td>2020</td>
+        <td>War</td>
+        <td>92</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <th>8895819762561410929</th>
+        <td>2019-Ottam</td>
+        <td>tt9905412</td>
+        <td>Ottam</td>
+        <td>Ottam</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>120</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>4354197221657831672</th>
+        <td>2019-Pengalila</td>
+        <td>tt9905462</td>
+        <td>Pengalila</td>
+        <td>Pengalila</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>111</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>7182214835308850875</th>
+        <td>2019-Manoharam</td>
+        <td>tt9906644</td>
+        <td>Manoharam</td>
+        <td>Manoharam</td>
+        <td>2019</td>
+        <td>Comedy, Drama</td>
+        <td>122</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-3483546144103097732</th>
+        <td>2020-Le lion</td>
+        <td>tt9908390</td>
+        <td>Le lion</td>
+        <td>Le lion</td>
+        <td>2020</td>
+        <td>Comedy</td>
+        <td>95</td>
+        <td>France, Belgium</td>
+      </tr>
+      <tr>
+        <th>8965474185003017959</th>
+        <td>2020-De Beentjes van Sint-Hildegard</td>
+        <td>tt9911196</td>
+        <td>De Beentjes van Sint-Hildegard</td>
+        <td>De Beentjes van Sint-Hildegard</td>
+        <td>2020</td>
+        <td>Comedy, Drama</td>
+        <td>103</td>
+        <td>Netherlands</td>
+      </tr>
+      <tr>
+        <th>-6083446290931633814</th>
+        <td>2019-Padmavyuhathile Abhimanyu</td>
+        <td>tt9911774</td>
+        <td>Padmavyuhathile Abhimanyu</td>
+        <td>Padmavyuhathile Abhimanyu</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>130</td>
+        <td>India</td>
+      </tr>
+      <tr>
+        <th>-5259795891187343194</th>
+        <td>2019-Sokagin Çocuklari</td>
+        <td>tt9914286</td>
+        <td>Sokagin Çocuklari</td>
+        <td>Sokagin Çocuklari</td>
+        <td>2019</td>
+        <td>Drama, Family</td>
+        <td>98</td>
+        <td>Turkey</td>
+      </tr>
+      <tr>
+        <th>226017272281718265</th>
+        <td>2019-La vida sense la Sara Amat</td>
+        <td>tt9914942</td>
+        <td>La vida sense la Sara Amat</td>
+        <td>La vida sense la Sara Amat</td>
+        <td>2019</td>
+        <td>Drama</td>
+        <td>74</td>
+        <td>Spain</td>
       </tr>
     </tbody>
   </table>
+  <br>
+
+  
 
 </main>
 
