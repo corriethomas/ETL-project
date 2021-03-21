@@ -18,3 +18,6 @@ We will use postgreSQL to create our database. This database will also go to a w
 IMDB data:https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv
 
 Streaming services data:https://www.kaggle.com/ruchi798/movies-on-netflix-prime-video-hulu-and-disney and https://www.kaggle.com/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney
+
+## Project Page
+A [project page](https://corriethomas.github.io/ETL-project/) will be available in GitHub Pages.
